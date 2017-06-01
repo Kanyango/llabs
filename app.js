@@ -50,10 +50,9 @@ require('./passport')(app , passport);
 
 require('./routes')(app , passport);
 
-app.server.listen(app.config.port , function(){
+app.server.listen(process.env.PORT || 8050)
 
-});
-console.log('Process ' + process.pid + ' is listening to all incoming requests');
+//console.log('Process ' + process.pid + ' is listening to all incoming requests');
 
 
 
