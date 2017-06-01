@@ -2,13 +2,13 @@
 var mongoose = require('mongoose');
 //var access  = require('./access');
 var redisClient = require('redis').createClient;
-var redis = redisClient(6379, 'localhost');
+//var redis = redisClient(6379, 'localhost');
 var config = require('./config');
 var jwt = require('express-jwt');
 var auth  = jwt({ secret : config.secret , userProperty: 'payload'});
 var passport = require('./passport');
-var cache = require('express-redis-cache')();
-var cache = require('express-redis-cache')({ prefix: 'llabsApp' });
+//var cache = require('express-redis-cache')();
+//var cache = require('express-redis-cache')({ prefix: 'llabsApp' });
 var user    = require('./server/service/user'); 
 var strength    = require('./server/service/strengths');
 var weak    = require('./server/service/weak');
