@@ -1,0 +1,80 @@
+
+<div layout="row" layout-padding>
+	<div flex="35">
+		<div layout-align="center" layout-padding>
+			<p class="md-display-2" md-colors="{color: 'blue-A400' }">
+			 Organisational Policies</p>
+		</div>
+		
+		<div layout-padding>
+			<md-divider></md-divider>
+		<P class="md-title">Points to consider.</P>
+		 <p class="md-body-1">Reasons why you are in business.</p>
+		 <p class="md-body-1">Why this business ? </p>
+	</div>
+	</div>
+	<md-divider></md-divider>
+	<div flex="65">
+		<md-card>
+			<md-toolbar md-colors="{background: 'grey-700' }">
+			<div class="md-toolbar-tools">
+			<h2 ><span>Policies</span></h2>
+				<span flex></span>
+		</div>
+	</md-toolbar>
+	    <md-card-content>
+
+	    <md-card layout-padding ng-repeat="item in policies"
+	               md-colors="{background: 'amber-A200' }">
+	    	 <uib-accordion close-others="oneAtATime">
+	            <div uib-accordion-group 
+	               md-colors="{background: 'grey-600' }"
+	                class="panel-default" heading="{{item.header}}" >
+	                <md-subheader>
+	                <md-button class="md-icon-button"
+                     md-colors="{background: 'grey-900' }" 
+                    ng-click="delItem(item._id)">
+                    <i class="material-icons"> delete </i>
+                    </md-button>
+                </md-subheader>
+	           <md-card layout-padding ng-repeat="pol in item.pols" 
+	           md-colors="{background: 'amber-A200' }" 
+	           layout="row">
+	           <span flex="70" class="md-subhead">{{$index+1}}. {{pol.name}} </span>
+                    <md-button class="md-icon-button"
+                     md-colors="{background: 'grey-900' }" 
+                    ng-click="del(item._id, pol.name)">
+                    <i class="material-icons"> delete </i>
+                    </md-button>
+               </md-card>
+                    <md-card layout-padding
+                      md-colors="{background: 'amber-400' }">
+				     <div layout="row">
+					     <div flex="10">
+					      <md-button class="md-icon-button"
+					       ng-click="addItems(item._id, pol)"><md-icon>add_black</md-icon></md-button>
+					  </div>
+					  <div flex="90">
+				      <input class="form-control" ng-model="pol.name">
+				  </div>
+				     </div>
+				     </md-card>
+                  </div>
+                </uib-accordion>
+	     </md-card>
+	     
+	     <md-card layout-padding md-colors="{background: 'amber-400' }">
+	     <div layout="row">
+		     <div flex="10">
+		      <md-button class="md-icon-button" ng-click="add()"><md-icon>add_black</md-icon></md-button>
+		  </div>
+		  <div flex="90">
+	      <input class="form-control" ng-model="poly.header">
+	  </div>
+	     </div>
+	     </md-card>
+
+	  
+	    </md-card>
+	</div>
+</div>

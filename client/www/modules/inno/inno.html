@@ -1,0 +1,279 @@
+<div layout="row" layout-padding>
+	<div flex="35">
+		<div layout-align="center" layout-padding>
+			<p class="md-display-2" md-colors="{color: 'blue-A400' }">
+				Innovations</p>
+		</div>
+		
+		<div layout-padding>
+			<md-divider></md-divider>
+		<P class="md-title">Points to consider.</P>
+		 <p class="md-body-1">1. Innovation refers to the process of brainstorming new ways to do things, a creative way that is more effective than existing methods.</p>
+		 <p class="md-body-1">2. Innovation keeps the business alive and competitive in the market
+		       </p>
+	</div>
+	</div>
+	<md-divider></md-divider>
+	<div flex="65">
+		<md-card>
+			<md-toolbar md-colors="{background: 'blue-grey-900' }">
+			<div class="md-toolbar-tools">
+			<h2 ><span>Innovations</span></h2>
+				<span flex></span>
+		</div>
+	</md-toolbar>
+	    <md-card-content>
+
+	    <md-card layout-padding ng-repeat="item in inno" 
+	            md-colors="{background: 'amber-A200' }">
+	    <div layout="row">
+	      <span class="md-subhead" flex="70">{{$index+1}}. {{item.action}} </span>
+	      <md-button class="md-icon-button" ng-click="del(item._id)"
+	      md-colors="{background: 'grey-800'}">
+	      <i class="material-icons"> delete </i>
+	     </md-button>
+	     <md-button class="md-icon-button" ng-click="isCollapsed = !isCollapsed"
+	     md-colors="{background: 'grey-800'}">
+	      <i class="material-icons"> edit </i>
+	     </md-button>
+	 </div>
+	      <uib-accordion close-others="oneAtATime">
+	      <div uib-accordion-group class="panel-default" heading="Details"
+	        md-colors="{background: 'grey-800'}">
+	      	 <span class="md-body-1">Accountable: {{item.acc}}</span>
+	      	 <br>
+	      	 <span class="md-body-1">
+	      	 	Start Period    : {{item.start_period | date: mediumDate }}</span>
+	      	 <br>
+	      	 <span class="md-body-1">
+	      	 	End Period    : {{item.end_period | date: mediumDate }}</span>
+	      	 <br>
+	      	 <span class="md-body-1">Key Performance Indicator : {{item.kpi}}</span>
+	      	 <br>
+	      	 <span class="md-body-1">Target : {{item.target}}</span>
+	      	 <br>
+	      	 <span class="md-body-1">Achieved : {{item.evaluate}}</span>
+	      	 <br>
+	      	 <uib-accordion close-others="oneAtATime">
+	      <div uib-accordion-group class="panel-default"
+	        md-colors="{background: 'grey-300'}" heading="Evaluate">
+	      	  <span class="md-body-1">Enter the value achieved</span>
+	      	  <md-card layout-padding  md-colors="{background: 'amber-A200'}">
+		       <div layout="row">
+		           <div flex="10">
+		            <md-button class="md-icon-button"ng-click="eval(item._id)">
+		            <i class="material-icons">add_black</i></md-button>
+		          </div>
+		          <div flex="90">
+		           <input class="form-control" placeholder="customer label" ng-model="e.evaluate">
+		        </div>
+		       </div>
+          </md-card>
+	      	 
+	      </div>
+	  </uib-accordion>
+	      </div>
+	  </uib-accordion>
+
+	    <uib-accordion close-others="oneAtATime">
+	      <div uib-accordion-group class="panel-default" heading="Performance"
+	          md-colors="{background: 'grey-600'}">
+	      	 <uib-progressbar style="height: 28px" class="text-center"
+	      	  value="item.status" type="warning" max="100"
+	      	   >
+	      	  <span class="md-title">{{ item.status }} /100</span>
+	      	</uib-progressbar>
+			</canvas>
+	      	 
+	      </div>
+	  </uib-accordion>
+
+	   <uib-accordion close-others="oneAtATime">
+	      <div uib-accordion-group class="panel-default" heading="Implementation"
+	       md-colors="{background: 'grey-200'}">
+	      	  <span class="md-body-1"> In this phase of the innovation process you
+	      	   decide to add the innovation to be part of your business system or ignore it , based on its performance. </span>
+	      	   <br />
+	      	   <md-button class="md-raised" md-colors="{background: 'grey-700'}"
+	      	   ng-click="isCollapsed2 = !isCollapsed2">
+	      	   add to procedures
+	      	   </md-button>
+	      	   <md-button class="md-raised" md-colors="{background: 'green-700'}"
+	      	     ng-click="isCollapsed3 = !isCollapsed3">
+	      	   add to policies
+	      	   </md-button>
+                 <br />
+	      	   <div uib-collapse="isCollapsed2" md-colors="{background: 'grey-100'}" 
+	      	   layout-padding>
+	      	        <span class="md-title">Procedures</span>
+	      	        <md-divider></md-divider>
+                   <div ng-repeat="proc in procs" layout="row">
+                   	 <span class="md-title" flex="50">{{ $index + 1 }}. {{ proc.header }}</span>
+                   	 <md-button class="md-raised md-icon-button"
+                   	  md-colors="{background: 'grey-800'}" 
+                   	  ng-click="addProc(proc._id , item.action)">
+			      	   <i class="material-icons">add</i>
+			      	   </md-button>
+                   </div>
+	      	   </div>
+	      	    <div uib-collapse="isCollapsed3" md-colors="{background: 'grey-100'}" 
+	      	   layout-padding>
+	      	        <span class="md-title">Policies</span>
+	      	        <md-divider></md-divider>
+                   <div ng-repeat="poly in policies" layout="row">
+                   	 <span class="md-title" flex="50">{{ $index + 1 }}. {{ poly.header }}</span>
+                   	 <md-button class="md-raised md-icon-button"
+                   	  md-colors="{background: 'grey-800'}" 
+                   	  ng-click="addPoly(poly._id , item.action)">
+			      	   <i class="material-icons">add</i>
+			      	   </md-button>
+                   </div>
+	      	   </div>
+	      </div>
+
+	  </uib-accordion>
+	  	<!-- Editing Start -->
+	      <div uib-collapse="isCollapsed" md-colors="{background: 'grey-500'}">
+
+	      	<form>
+			      &nbsp;
+			      	<div layout="row">
+			      	<div  flex="40">
+			      		<label>Owner</label>
+			      		<input class="form-control input-sm" ng-model="item.acc" 
+			      		placeholder="Description">
+			      	</div>
+			      	&nbsp;
+			      	<div  flex="65">
+			      		<label>Action</label>
+			      		<input class="form-control input-sm" ng-model="item.action" 
+			      		placeholder="Description">
+			      	</div>
+			      	</div>
+			      	&nbsp;
+			      	<div layout="row">
+			      	<div flex="50">
+			      		<label>KPI</label>
+			      		<input class="form-control input-sm" ng-model="item.kpi" 
+			      		placeholder="Description">
+			      	</div>
+			      </div>
+			      &nbsp;
+			     
+			      	<div layout="row">
+			      		<md-divider></md-divider>
+			      	<div flex="35">
+			      		<label>Measure By </label>
+			      		<select class="form-control" ng-model="item.measure">
+			      			<option value="#"> # </option>
+			      			<option value="Ksh"> Ksh </option>
+			      			<option value="%"> % </option>
+			      		</select>
+			      	</div>
+			      	&nbsp;
+			      	<div flex="35">
+			      		<label>Value </label>
+			      		<input class="form-control input-sm" ng-model="item.target" placeholder="Value">
+			      	</div>
+			      </div>
+                     <br />
+                     <div layout="row"  layout="padding">
+			      	<md-input-container flex="35">
+			      	<label>Start Period </label>
+			      	<md-datepicker ng-model="item.start_period"></md-datepicker>
+			       </md-input-container>
+			          &nbsp;&nbsp;
+			      	<md-input-container flex="35">
+			      	<label>End Period</label>
+			      	<md-datepicker ng-model="item.end_period"></md-datepicker>
+			       </md-input-container>
+			   </div>
+			      
+	
+			 <md-button class="md-raised"
+			      md-colors="{background: 'grey-200' }"  ng-click="update(item)">
+			 update</md-button>
+			 
+			    
+			      </form>
+
+            
+	      </div>
+	      <!-- Editing end -->
+	     </md-card>
+
+
+	     <uib-accordion close-others="oneAtATime">
+	     <div uib-accordion-group class="panel-default" heading="New Innovation"
+	        md-colors="{background: 'amber-A100' }">
+	     <form>
+			      &nbsp;
+			      	<div layout="row">
+			      	<div  flex="40">
+			      		<label>Owner</label>
+			      		<select ng-model="targ.acc"  class="form-control input-sm"
+			              ng-options="acc.posn as acc.posn for acc in posns" 
+			              name="acc" >  
+			             </select> 
+			      	</div>
+			      	&nbsp;
+			      	<div  flex="65">
+			      		<label>Action</label>
+			      		<input class="form-control input-sm" ng-model="targ.action" 
+			      		placeholder="Description">
+			      	</div>
+			      	</div>
+			      	&nbsp;
+			      	<div layout="row">
+			      	<div flex="50">
+			      		<label>KPI</label>
+			      		<input class="form-control input-sm" ng-model="targ.kpi" 
+			      		placeholder="Description">
+			      	</div>
+			      </div>
+			      &nbsp;
+			     
+			      	<div layout="row">
+			      		<md-divider></md-divider>
+			      	<div flex="35">
+			      		<label>Measure By </label>
+			      		<select class="form-control" ng-model="targ.measure">
+			      			<option value="#"> # </option>
+			      			<option value="Ksh"> Ksh </option>
+			      			<option value="%"> % </option>
+			      		</select>
+			      	</div>
+			      	&nbsp;
+			      	<div flex="35">
+			      		<label>Value </label>
+			      		<input class="form-control input-sm" ng-model="targ.target" placeholder="Value">
+			      	</div>
+			      </div>
+                     <br />
+                     <div layout="row"  layout="padding">
+			      	<md-input-container flex="35">
+			      	<label>Start Period </label>
+			      	<md-datepicker ng-model="targ.start_period"></md-datepicker>
+			       </md-input-container>
+			          &nbsp;&nbsp;
+			      	<md-input-container flex="35">
+			      	<label>End Period</label>
+			      	<md-datepicker ng-model="targ.end_period"></md-datepicker>
+			       </md-input-container>
+			   </div>
+			      
+	
+			  <md-button class="md-raised"
+
+			    md-colors="{background: 'grey-800' }"
+			    ng-click="save()">save</md-button>
+			  </div>
+			    
+			      </form>
+			</div>
+		</uib-accordion>
+	  
+	    </md-card>
+	</div>
+</div>
+

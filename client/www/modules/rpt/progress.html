@@ -1,0 +1,56 @@
+
+<div layout="row" layout-align="center center" >
+<md-card flex="50">
+<md-toolbar layout="row" class="md-toolbar-tools" md-colors="{background: 'indigo-A200' }"> 
+			<div class="md-toolbar-tools">
+			<h2 ><span>Progress Card</span></h2>
+				<span flex></span>
+		</div>
+</md-toolbar>
+	<md-card-content layout-padding layout="column">
+	  <div flex="50">
+	  	<label> Description </label>
+		<input class="form-control" ng-model="resp.kpi">
+	 </div>
+	 <div flex="50">
+	  	<label> What's your Progress </label>
+		<select class="form-control" ng-model="prog.progress"> 
+          <option value="I'm working on it">I'm working on it</option>
+          <option value="I need to defer">I need to defer</option>
+          <option value="I need assistance">I need assistance</option>
+          <option value="I'm late">I'm late</option>
+          <option value="I'm not yet started">I'm not yet started</option>
+          <option value="I'm done">I'm done</option>
+		</select>
+	 </div>
+         <span class="md-subhead">Annual Reporting</span>
+		 <div layout="row" class="well">
+		     <div flex="50">
+				<label>Start Date</label>
+				<md-datepicker ng-model="prog.start_date" placeholder="Start Date">
+				</md-datepicker>
+			 </div>
+			 <div flex="50">
+				<label>End Date</label>
+				<md-datepicker ng-model="prog.end_date" placeholder="End Date">
+				</md-datepicker>
+		     </div>
+		 </div>
+
+	 <div flex="25">
+	  	<label> Target </label>
+		<input class="form-control" ng-model="resp.value"> 
+	 </div>
+	 <div flex="25">
+	  	<label> Measure </label>
+		<input class="form-control" ng-model="resp.measure"> 
+	 </div>
+	 <div flex="25">
+	  	<label> Rate your Progress </label>
+		<input class="form-control" ng-model="prog.rate"> 
+	 </div>
+	 <md-button md-colors="{background: 'light-blue-A700'}"
+	  ng-click="save(resp.strat, resp.wide)">SAVE</md-button>
+    </md-card-content>
+</md-card>
+</div>

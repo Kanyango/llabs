@@ -1,0 +1,43 @@
+<md-subheader>
+	<span class="md-headline">Metrics</span>
+</md-subheader>
+ <md-divider></md-divider>
+
+ <div layout="row" layout-padding md-colors="{background: 'grey-300' }">
+  <span flex="20" class="md-title">Filter Date</span>
+<md-datepicker ng-model="start_date" md-placeholder="Start Date" flex="30">
+          </md-datepicker>
+          <md-datepicker ng-model="end_date" md-placeholder="End Date" flex="30">
+          </md-datepicker>
+          <div flex="40">
+            
+          </div>
+          <md-button flex="10" md-colors="{background: 'green-600' }"
+          class="md-raised" ng-click="view()">View</md-button>
+  </div>
+
+<div class="row">
+ <div class="col-md-3" ng-repeat="perf in performance">
+ 	<md-card>
+ 	  <md-card-header md-colors="{background: 'grey-600' }">
+	      <span class="md-subhead" md-colors="{color: 'amber-A200' }" >
+	      	{{ perf.kpi }}</span>
+      </md-card-header>
+
+     <md-divider></md-divider>
+      <md-card-content md-colors="{background: 'grey-900' }">
+       
+        <div class="text-center" >
+        	<span class="md-display-2" 
+          md-colors="{color: 'amber-A200' }">{{perf.val}}%</span>
+        </div>
+        
+      </md-card-content>
+
+       <md-divider></md-divider>
+      <md-card-footer md-colors="{background: 'grey-700' }">
+	      <span md-colors="{color: 'amber-A200' }"><i class="material-icons">person</i> &nbsp;&nbsp; {{ perf.owner }} </span>
+      </md-card-footer>
+    </md-card>
+ </div>
+</div>

@@ -1,0 +1,110 @@
+<div layout="row">
+<md-toolbar layout="row" md-colors="{background: 'green-600' }">
+  <div class="md-toolbar-tools">
+    <div>
+    <md-button  ng-click="toggleLeft()"  aria-label="Show User List">
+    <i class="material-icons">menu</i>
+    </md-button></div>
+    <span flex></span>
+    <span class="md-body" ng-show="isLoggedIn()">{{ currentUser() }}</span>
+    &nbsp;
+    <md-button class="md-icon-button" ng-click="logOut()" ng-show="isLoggedIn()">
+    <i class="material-icons"> exit_to_app</i>
+   </md-button>
+  </div>
+ </md-toolbar>
+</div>
+
+<div layout="row" flex>
+    <md-sidenav md-colors="{background: 'grey-800' }"
+        class="md-sidenav-left"
+        md-component-id="left"
+        md-is-locked-open="$mdMedia('gt-md')"
+        class="md-whiteframe-4dp">
+
+      <md-toolbar md-colors="{background: 'green-600' }">
+        <div class="md-toolbar-tools">
+          <span class="md-title">Lengo Admin</span></div>
+      </md-toolbar>
+        <md-list flex>
+          <md-list-item ui-sref="dash.main" ng-click="toggleList()">
+          <i class="material-icons" flex="20"> home </i>&nbsp;
+          <span class="md-body" flex="30">Dashboard</span>
+          </md-list-item>
+          <md-divider></md-divider>
+          <md-list-item ui-sref="dash.profile" ng-click="toggleList()">
+          <i flex="20" class="material-icons">location_on</i>
+          <span class="md-body" flex="60">SWOT Analysis </span>
+          </md-list-item>
+          <md-divider></md-divider>
+          <md-list-item ui-sref="dash.objs" ng-click="toggleList()">
+          <i flex="20" class="material-icons">directions</i>
+          <span class="md-body" flex="60">Strategic Objectives</span>
+          </md-list-item>
+          <md-divider></md-divider>
+          <md-list-item ui-sref="dash.orgs"  ng-click="toggleList()">
+          <i flex="20" class="material-icons">directions</i>
+          <span class="md-body" flex="60">Organisational Strategies</span>
+
+           </md-list-item>
+           <md-divider></md-divider>
+          <!--<md-divider></md-divider>
+           <div class="slider closed" md-colors="{background: 'grey-900' }">
+                <!--<md-list-item ui-sref="dash.fin"><span flex="20"></span>
+                <i class="material-icons" flex="10" style="font-size : 12px;">
+                 fiber_manual_record </i>Financial Strategy</md-list-item> 
+                <md-list-item ui-sref="dash.orgs"><span flex="20"></span>
+                <i class="material-icons" flex="10" style="font-size : 12px;">
+                 fiber_manual_record </i>Organisational Strategy</md-list-item>
+                <md-list-item ui-sref="dash.mkt"><span flex="20"></span>
+                <i class="material-icons" flex="10" style="font-size : 12px;">
+                 fiber_manual_record </i>Marketing Strategy</md-list-item>
+          </div> -->
+           <md-list-item ui-sref="dash.metrics" ng-click="toggleList()">
+          <i flex="20" class="material-icons">insert_chart</i>
+          <span class="md-body" flex="60">Metrics</span>
+          </md-list-item>
+          <md-divider></md-divider>
+
+          <md-list-item ui-sref="dash.inno" ng-click="toggleList()">
+          <i flex="20" class="material-icons">directions</i>
+          <span class="md-body" flex="60">Innovations</span>
+          </md-list-item>
+          <md-divider></md-divider>
+          <md-list-item ui-sref="dash.tasks" ng-click="toggleList()">
+          <i flex="20" class="material-icons">directions</i>
+          <span class="md-body" flex="60">Tasking</span>
+          </md-list-item>
+          <md-divider></md-divider>
+           <md-list-item ui-sref="dash.proc" ng-click="toggleList()">
+          <i flex="20" class="material-icons">directions</i>
+          <span class="md-body" flex="60">Procedures</span>
+          </md-list-item>
+          <md-divider></md-divider>
+          <md-list-item ui-sref="dash.poly" ng-click="toggleList()">
+          <i flex="20" class="material-icons">directions</i>
+          <span class="md-body" flex="60">Policies</span>
+          </md-list-item>
+          <md-divider></md-divider>
+          <md-list-item ui-sref="dash.settings" ng-click="toggleList()">
+          <i class="material-icons" flex="20"> settings </i>&nbsp;
+          <span class="md-body">Settings</span>
+          </md-list-item>
+          <md-divider></md-divider>
+          <md-list-item ui-sref="dash.rpt" ng-click="toggleList()">
+          <i class="material-icons" flex="20"> settings </i>
+          <span class="md-body" flex="20">Reports</span>
+          </md-list-item>
+          <md-divider></md-divider>
+        </md-list flex>
+
+    </md-sidenav>
+    <!--id="content"-->
+    <md-content flex  class="md-padding">
+      
+      
+      <div ui-view></div>
+
+      </md-content>
+
+</div>

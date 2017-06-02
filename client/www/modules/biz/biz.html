@@ -1,0 +1,239 @@
+<div ng-cloak>
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom>
+     <md-tab label="SWOT Analysis">
+         <md-content class="md-padding">
+             <uib-accordion close-others="oneAtATime">
+               <div uib-accordion-group class="panel-default" 
+                      heading="Strengths"
+                                   md-colors="{background: 'grey-700' }">
+                  <md-card layout-padding ng-repeat="item in strengths"
+                    md-colors="{background: 'amber-A200' }"  >
+                   <div layout="row">
+                    <span class="md-subhead" flex="40">{{$index + 1}}. {{item.desc}} </span>
+                    <span flex="40"></span>
+                    <md-button class="md-icon-button"
+                     md-colors="{background: 'grey-900' }" 
+                    ng-click="delS(item._id)">
+                    <i class="material-icons"> delete </i>
+                    </md-button>
+                  </div>
+                  </md-card>
+                  <md-card layout-padding>
+                   <div layout="row">
+                      <div flex="10">
+                        <md-button class="md-icon-button"
+                        md-colors="{background: 'grey-800' }"
+                         ng-click="strength()">
+                          <i class="material-icons">add_white</i>
+                        </md-button>
+                      </div>
+                  <div flex="90">
+                     <input class="form-control" ng-model="s.desc">
+                  </div>
+                </div>
+              </md-card>
+              </div>
+           </uib-accordion>
+           <uib-accordion close-others="oneAtATime">
+               <div uib-accordion-group class="panel-default" 
+                                  heading="Weaknesses" 
+                                   md-colors="{background: 'grey-600' }">
+                  <md-card layout-padding ng-repeat="item in weakness"
+                   md-colors="{background: 'amber-A200' }" >
+                    <div layout="row">
+                    <span class="md-subhead" flex="40">{{$index + 1}}. {{item.desc}} </span>
+                    <span flex="40"></span>
+                    <md-button class="md-icon-button"
+                     md-colors="{background: 'grey-900' }" 
+                    ng-click="delW(item._id)">
+                    <i class="material-icons"> delete </i>
+                    </md-button>
+                  </div>
+                  </md-card>
+                  <md-card layout-padding>
+                   <div layout="row">
+                      <div flex="10">
+                        <md-button class="md-icon-button"
+                        md-colors="{background: 'grey-800' }"
+                         ng-click="weak()">
+                          <i class="material-icons">add_white</i>
+                        </md-button>
+                      </div>
+                  <div flex="90">
+                     <input class="form-control" ng-model="w.desc">
+                  </div>
+                </div>
+              </md-card>
+              </div>
+           </uib-accordion>
+           <uib-accordion close-others="oneAtATime">
+               <div uib-accordion-group class="panel-default" 
+                    
+                                  heading="Opportunities"
+                                  md-colors="{background: 'grey-700' }">
+                  <md-card layout-padding ng-repeat="item in opports"
+                   md-colors="{background: 'amber-A200' }" >
+                   <div layout="row">
+                    <span class="md-subhead" flex="40">{{$index + 1}}. {{item.desc}} </span>
+                    <span flex="40"></span>
+                       <md-button class="md-icon-button"
+                     md-colors="{background: 'grey-900' }" 
+                    ng-click="delO(item._id)">
+                    <i class="material-icons"> delete </i>
+                    </md-button>
+                  </div>
+                  </md-card>
+                  <md-card layout-padding>
+                   <div layout="row">
+                      <div flex="10">
+                        <md-button class="md-icon-button" 
+                        md-colors="{background: 'grey-800' }"
+                        ng-click="opport()">
+                        <i class="material-icons">add_white</i></md-button>
+                      </div>
+                  <div flex="90">
+                     <input class="form-control" ng-model="o.desc">
+                  </div>
+                </div>
+              </md-card>
+              </div>
+           </uib-accordion>
+           <uib-accordion close-others="oneAtATime">
+               <div uib-accordion-group class="panel-default" 
+                   md-colors="{background: 'grey-700' }"
+                                  heading="Threats">
+                  <md-card layout-padding ng-repeat="item in threats"
+                   md-colors="{background: 'amber-A200' }" >
+                  <div layout="row">
+                    <span class="md-subhead" flex="40">{{$index + 1}}. {{item.desc}} </span>
+                    <span flex="40"></span>
+                    <md-button class="md-icon-button"
+                     md-colors="{background: 'grey-900' }" 
+                    ng-click="delT(item._id)">
+                    <i class="material-icons"> delete </i>
+                    </md-button>
+                  </div>
+                  </md-card>
+                  <md-card layout-padding>
+                   <div layout="row">
+                      <div flex="10">
+                        <md-button class="md-icon-button" 
+                        md-colors="{background: 'grey-800' }"
+                        ng-click="threat()"> 
+                        <i class="material-icons">add_white</i></md-button>
+                      </div>
+                  <div flex="90">
+                     <input class="form-control" ng-model="t.desc">
+                  </div>
+                </div>
+              </md-card>
+              </div>
+           </uib-accordion>
+        </md-content>
+      </md-tab>
+      <!--<md-tab label="About Us">
+        <md-content class="md-padding">
+           <uib-accordion close-others="oneAtATime">
+             <div uib-accordion-group class="panel-default" heading="Business History">
+              <md-card layout-padding ng-hide="storyUndef(story)">
+               <span class="md-subheadline">{{ story.desc }}</span>
+               <span flex></span>
+               <div layout="row">
+               <md-button class="md-icon-button"
+                       md-colors="{background: 'grey-900' }" 
+                       ng-click="isCollapsed = !isCollapsed">
+                       <i class="material-icons"> edit </i>
+               </md-button>
+               <md-button class="md-icon-button"
+                       md-colors="{background: 'grey-900' }" 
+                       ng-click="remStory(story._id)">
+                       <i class="material-icons"> delete </i>
+               </md-button>
+             </div>
+             <div uib-collapse="isCollapsed" md-colors="{background: 'grey-100'}">
+              <textarea class="form-control" rows="9" cols="9" ng-model="story.desc">
+              </textarea>
+               <md-button class="md-raised"
+                       md-colors="{background: 'grey-900' }" 
+                       ng-click="upStory(story)">update
+               </md-button>
+               </div>
+              </md-card>
+              <md-card layout-padding ng-show="storydef(story)">
+               <textarea class="form-control" rows="9" cols="9" ng-model="us.desc"></textarea>
+               <md-button class="md-raised" 
+                       md-colors="{background: 'grey-900' }" 
+                       ng-click="save_st(story._id)">SAVE
+               </md-button>
+
+               </md-card>
+             </div>
+
+           </uib-accordion>
+           <uib-accordion close-others="oneAtATime">
+             <div uib-accordion-group class="panel-default" heading="Vision">
+                <textarea class="form-control" rows="4" cols="4" ng-model="biz.vision">
+               </textarea>
+               <md-button class="md-raised"
+               md-colors="{background: 'grey-900' }"  ng-click="viss()">SAVE</md-button>
+             </div>
+           </uib-accordion>
+           <uib-accordion close-others="oneAtATime">
+             <div uib-accordion-group class="panel-default" heading="Mission">
+                <textarea class="form-control" rows="5" cols="5" ng-model="biz.mission">
+               </textarea>
+               <md-button class="md-raised"
+               md-colors="{background: 'grey-900' }"  ng-click="miss()">SAVE</md-button>
+             </div>
+           </uib-accordion>
+           <uib-accordion close-others="oneAtATime">
+             <div uib-accordion-group class="panel-default" heading="Core Values">
+               <md-card layout-padding>
+                   <div layout="row">
+                      <div flex="10">
+                        <md-button class="md-icon-button" ng-click="strength()"><md-icon>add</md-icon></md-button>
+                      </div>
+                  <div flex="90">
+                     <input class="form-control" ng-model="s.desc">
+                  </div>
+                </div>
+              </md-card>
+             </div>
+           </uib-accordion>
+        </md-content>
+      </md-tab>-->
+     <!-- <md-tab label="Our Products/Services">
+        <md-card layout-padding>
+        <md-content class="md-padding">
+          <uib-accordion close-others="oneAtATime">
+             <div uib-accordion-group class="panel-default" heading="Benefits">
+                <md-card layout-padding>
+                   <div layout="row">
+                      <div flex="10">
+                        <md-button class="md-icon-button" ng-click="add()"><md-icon>add</md-icon></md-button>
+                      </div>
+                  <div flex="90">
+                     <input class="form-control" ng-model="s.strategy">
+                  </div>
+                </div>
+              </md-card>
+             </div>
+           </uib-accordion>
+           </md-card>
+           <md-card layout-padding>
+                   <div layout="row">
+                      <div flex="10">
+                        <md-button class="md-icon-button" ng-click="add()"><md-icon>add</md-icon></md-button>
+                      </div>
+                  <div flex="90">
+                     <input class="form-control" ng-model="s.strategy">
+                  </div>
+                </div>
+              </md-card>
+        </md-content>
+      </md-tab> -->
+      
+    </md-tabs>
+  </md-content>
+</div>

@@ -1,0 +1,220 @@
+<md-card>
+ 
+ 	<md-toolbar md-colors="{background: 'blue-grey-900' }">
+			<div class="md-toolbar-tools">
+			<h2 ><span>Marketing</span></h2>
+				<span flex></span>
+		</div>
+	</md-toolbar>
+	<md-card-content>
+	      <md-tabs md-dynamic-height md-border-bottom>
+	      <!-- Benefits Tab -->
+      <md-tab label="Benefits">
+        <md-content class="md-padding">
+    <span class="md-subhead"> State the benefits your products/services provide</span>
+               <br />
+               <span class="md-subhead">Benefits are categorized in 3 </span> <br />
+                                        <span class="md-body-1">1.Emotional</span>
+                                        <br /> 
+                                        <span class="md-body">2.Functional</span>
+                                         <br /> 
+                                        <span class="md-body">3.Economical</span>  
+                   
+              <md-card layout-padding ng-repeat="item in bens">
+		        <div layout="row">
+		        <span class="md-subhead" flex="70">{{$index+1}}. {{item.desc}}</span>
+		        <span flex="10"></span>
+		        <md-button class="md-icon-button"
+		         md-colors="{background: 'grey-700' }" ng-click="del(item._id)">
+                <i class="material-icons">delete</i>
+		        </md-button>
+		      </div>
+            </md-card>
+
+          <md-card layout-padding>
+       <div layout="row">
+         <div flex="10">
+          <md-button class="md-icon-button"ng-click="addBen()"><md-icon>add_black</md-icon></md-button>
+      </div>
+      <div flex="90">
+        <input class="form-control"  ng-model="p.desc">
+    </div>
+       </div>
+       </md-card>
+          
+        </md-content>
+      </md-tab>
+
+      <!-- customer -->
+      <md-tab label="Customer Analysis">
+        <md-content class="md-padding">
+
+        <md-card layout-padding ng-repeat="item in custs">
+        <div layout="row">
+        <span class="md-subhead">{{$index+1}}. {{item.label}}</span>
+      </div>
+        <uib-accordion close-others="oneAtATime">
+        <div uib-accordion-group class="panel-success"  heading="Benefits">
+         
+           <div ng-repeat="ben in bens" layout="row" ng-hide="item.bens === 'undefined' ">
+             <span class="md-body-2" flex="20">{{$index + 1}}. {{ ben.desc }}</span>
+             <jk-rating-stars  max-rating="10"  rating="secondRate" 
+		        on-rating="onItemRating(rating, ben.desc, item._id)">
+		      </jk-rating-stars>
+             <span flex="10"></span>
+           </div>
+
+         <div ng-repeat="ben in item.bens" layout="row" ng-show="item.bens.length > 0">
+             <span class="md-body-2" flex="40">{{$index + 1}}. {{ ben.ben }}</span>
+             <jk-rating-stars  max-rating="10" flex="40"  rating="ben.rate" >
+		      </jk-rating-stars>
+		      <md-button class="md-icon-button" 
+		         md-colors="{background: 'grey-700' }" 
+		         ng-click="remBen(item._id, ben.ben, ben.rate)">
+                <i class="material-icons">delete</i>
+		        </md-button>
+              <br />
+              
+           </div>
+     </div>
+      
+    </uib-accordion>
+       </md-card>
+        <md-card layout-padding>
+       <div layout="row">
+           <div flex="10">
+            <md-button class="md-icon-button"ng-click="newCust()"><md-icon>add_black</md-icon></md-button>
+        </div>
+          <div flex="90">
+            <input class="form-control" placeholder="customer label" ng-model="c.label">
+    
+        </div>
+       </div>
+       </md-card>
+        </md-content>
+      </md-tab>
+      
+      <!-- competitor -->
+
+      <md-tab label="Competitor Analysis">
+        <md-content class="md-padding">
+
+        <md-card layout-padding ng-repeat="item in competitors">
+        <div layout="row">
+        <span class="md-subhead">{{$index+1}}. {{item.name}}</span>
+      </div>
+        <uib-accordion close-others="oneAtATime">
+        <div uib-accordion-group class="panel-success"  heading="Strengths">
+         <md-card layout-padding  ng-repeat="strong in item.strength">
+           <div layout="row">
+             <span class="md-body-2" flex="70">{{$index + 1}}. {{ strong.name }}</span>
+             <md-button class="md-icon-button" 
+		         md-colors="{background: 'grey-700' }" 
+		         ng-click="delStr(item._id,strong.name)">
+                <i class="material-icons">delete</i>
+		        </md-button>
+           </div>
+        </md-card>
+            <md-card layout-padding>
+       <div layout="row">
+           <div flex="10">
+            <md-button class="md-icon-button"ng-click="addStr(item._id)"><md-icon>add_black</md-icon></md-button>
+        </div>
+          <div flex="90">
+            <input class="form-control"  placeholder="Strengths"  ng-model="s.name">
+        </div>
+       </div>
+       </md-card>
+     </div>
+      
+    </uib-accordion>
+    <uib-accordion close-others="oneAtATime">
+        <div uib-accordion-group class="panel-success"  heading="Weaknesses">
+         
+         <md-card layout-padding ng-repeat="bens in item.weakness">
+           <div  layout="row">
+             <span class="md-body-2" flex="70">{{$index + 1}}. {{ bens.desc }}</span>
+             <md-button class="md-icon-button" 
+		         md-colors="{background: 'grey-700' }" 
+		         ng-click="delWeak(item._id,bens.desc)">
+                <i class="material-icons">delete</i>
+		        </md-button>
+           </div>
+       </md-card>
+            <md-card layout-padding>
+       <div layout="row">
+           <div flex="10">
+            <md-button class="md-icon-button"ng-click="addWeak(item._id)"><md-icon>add_black</md-icon></md-button>
+        </div>
+          <div flex="90">
+            <input class="form-control" ng-model="w.desc">
+        </div>
+       </div>
+       </md-card>
+     </div>
+      
+    </uib-accordion>
+       </md-card>
+
+
+         
+         <md-card layout-padding>
+            <div layout="row">
+              <div flex="10">
+          <md-button class="md-icon-button"ng-click="addCompe()"><md-icon>add_black</md-icon></md-button>
+      </div>
+          <div flex="90">
+            <input class="form-control"  placeholder="Competitor Name"   ng-model="compe.name">
+        </div>
+       </div>
+       </md-card>
+
+
+        </md-content>
+      </md-tab>
+
+      <md-tab label="Organisation Capabilities">
+        <md-content class="md-padding">
+
+        <span class="md-subhead"> Capabilities determine how well you can meet 
+            a customers needs.</span>
+               <br />
+               <span class="md-subhead">Benefits are categorized in 3 </span> <br />
+                                        <span class="md-body-1">1.Skills</span>
+                                        <br /> 
+                                        <span class="md-body">2.Resources</span>
+                                         <br /> 
+                                        <span class="md-body">3.Features</span>  
+                   
+              
+
+        <md-card layout-padding ng-repeat="item in caps">
+        
+          <div layout="row" layout-padding>
+             <span class="md-body-2" flex="70">{{$index + 1}}. {{ item.desc }}</span>
+             <md-button class="md-icon-button" 
+		         md-colors="{background: 'grey-700' }" 
+		         ng-click="delCap(item._id)">
+                <i class="material-icons">delete</i>
+		        </md-button>
+
+          </div>
+       </md-card>
+       <md-card layout-padding>
+       <div layout="row">
+           <div flex="10">
+            <md-button class="md-icon-button"ng-click="addCap()"><md-icon>add_black</md-icon></md-button>
+        </div>
+          <div flex="90">
+            <input class="form-control"   ng-model="cap.desc">
+        </div>
+       </div>
+       </md-card>
+          
+
+
+        </md-content>
+      </md-tab>
+    </md-tabs>
+    </md-card-content>
+</md-card>

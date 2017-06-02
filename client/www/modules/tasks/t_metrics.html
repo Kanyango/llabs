@@ -1,0 +1,106 @@
+<md-subheader>
+	<span class="md-headline">Task Metrics</span>
+</md-subheader>
+ <md-divider></md-divider>
+
+<div layout="row">
+ <md-card flex="50"> 
+
+      <md-card-header>
+        <span class="md-title"
+         md-colors="{color: 'grey-600' }" > Filter By Date </span>
+      </md-card-header>
+
+ <md-card-content layout="column" 
+     layout-padding md-colors="{background: 'amber-A100' }" >
+
+  <md-datepicker ng-model="start_date" md-placeholder="Start Date" flex="30">
+          </md-datepicker>
+          <md-datepicker ng-model="end_date" md-placeholder="End Date" flex="30">
+          </md-datepicker>
+          <div flex="40">
+            
+          </div>
+          <md-button flex="10" md-colors="{background: 'green-600' }"
+          class="md-raised" ng-click="view()">View</md-button>
+ </md-card-content>
+  </md-card>
+
+
+ <div flex="50">
+ 	<md-card>
+ 	  <md-card-header>
+	      <span class="md-title"
+	       md-colors="{color: 'grey-600' }" > Tasks Turnover </span>
+      </md-card-header>
+      <md-card-content md-colors="{background: 'green-500' }">
+       
+        <div class="text-center" >
+        	<span class="md-display-4">{{ turn }}%</span>
+        </div>
+        
+      </md-card-content>
+
+       <md-divider></md-divider>
+    </md-card>
+ 
+
+</div>
+</div>
+
+
+
+<div layout="row">
+
+<md-card  flex="50">
+
+      <md-card-header>
+        <span class="md-title"> Filter By Date </span>
+      </md-card-header>
+
+  <md-card-content layout="column" md-colors="{background: 'amber-A100' }">
+
+          <div layout="row">
+            <md-datepicker ng-model="start_date2" md-placeholder="Start Date">
+            </md-datepicker>
+          
+            <md-datepicker ng-model="end_date2" md-placeholder="End Date">
+            </md-datepicker>
+          </div>
+          <br />
+
+        <select ng-model="position" class="form-control input-sm"
+                    ng-options="position.posn as position.posn for position in posns" 
+                    name="position" >  
+        </select> 
+      <br />
+
+         
+
+          <md-button md-colors="{background: 'green-600' }"
+               class="md-raised" ng-click="view2()">
+              View
+        </md-button>
+
+  </md-card-content>
+</md-card>
+
+
+ 	<md-card flex="50">
+ 	  <md-card-header>
+	      <span class="md-title"
+	       md-colors="{color: 'grey-600' }" > Tasks Turnover By Position </span>
+      </md-card-header>
+      <md-card-content md-colors="{background: 'green-500' }">
+       
+        <div class="text-center" >
+        	<span class="md-display-4">{{ turn2 }}%</span>
+        </div>
+        
+      </md-card-content>
+
+       <md-divider></md-divider>
+    </md-card>
+
+
+</div>

@@ -1,0 +1,93 @@
+<md-card>
+ 
+ 	<md-toolbar md-colors="{background: 'blue-grey-900' }">
+			<div class="md-toolbar-tools">
+			<h2 ><span>Users</span></h2>
+				<span flex></span>
+		</div>
+	</md-toolbar>
+	<md-card-content>
+	      <md-tabs md-dynamic-height md-border-bottom>
+	      <!-- Benefits Tab -->
+      <md-tab label="Users">
+        <md-content class="md-padding">
+   
+           <div layout="row">
+  			 <md-card flex="70">
+        	   <md-toolbar md-colors="{background: 'grey-800'}">
+                 <div class="md-toolbar-tools">
+                 	<span class="md-title">Users List</span>
+                 </div>
+               </md-toolbar>
+                 <md-card-content>
+                   <md-list flex>
+                     <md-list-item class="md-3-line" 
+                        ng-repeat="user in users" ng-click="null">
+                           <div class="md-list-item-text" layout="column">
+		                    <h3 class="md-body-1">Position: {{ user.posn }}</h3>
+		                    <h4 class="md-body-2">Access Level: {{ user.access }}</h4>
+		                  </div>
+		                   <md-button class="md-icon-button" >
+		                    <i class="material-icons">edit</i>
+		                   </md-button>
+		                   <md-button class="md-icon-button" ng-click="del(user._id)">
+		                    <i class="material-icons">delete</i>
+		                   </md-button>
+                     </md-list-item>
+                     <md-divider></md-divider>
+                   </md-list>
+                 </md-card-content>
+  			 </md-card>
+  			  <md-card flex="30">
+        	   <md-toolbar md-colors="{background: 'grey-800'}">
+                 <div class="md-toolbar-tools">
+                 	<span class="md-title">New User</span>
+                 </div>
+        	   </md-toolbar>
+        	   <md-card-content>
+        	    <div layout="column">
+
+        	     <md-input-container>
+        	      <label>Position</label>
+        	      <input ng-model="user.posn">
+        	     </md-input-container>
+
+        	     <md-input-container>
+        	      <label>username</label>
+        	      <input ng-model="user.username">
+        	     </md-input-container>
+
+        	     <md-input-container>
+        	      <label>password</label>
+        	      <input ng-model="user.password">
+        	     </md-input-container>
+
+        	     <md-input-container>
+        	      <label>Access Level</label>
+        	      <input ng-model="user.access">
+        	     </md-input-container>
+                 
+                 <md-button class="md-raised" 
+                 md-colors="{background: 'green-500'}" ng-click="save()">
+                 SAVE
+                </md-button>
+
+        	    </div>
+        	   </md-card-content>
+  			 </md-card>
+           </div>
+          
+        </md-content>
+      </md-tab>
+
+      <!-- customer -->
+      
+      
+      <!-- competitor -->
+
+   
+
+      
+    </md-tabs>
+    </md-card-content>
+</md-card>

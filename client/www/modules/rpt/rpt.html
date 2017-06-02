@@ -1,0 +1,36 @@
+
+<md-card>
+	<md-toolbar md-colors="{background: 'teal-500'}">
+		<div layout="row" layout-align="center center" layout-padding>
+			<span class="md-title">Reports</span>
+		</div>
+   </md-toolbar>
+   <md-card-content>
+   	 <table class="table table-hover">
+   	 	<thead>
+	      <tr>
+	        <th>#</th>
+	        <th class="md-subhead">Accountable</th>
+	        <th class="md-subhead">Description</th>
+	        <th class="md-subhead">K.P.I</th>
+	        <th class="md-subhead">Status</th>
+	        <th class="md-subhead">Action</th>
+	      </tr>
+	      <tr ng-repeat="item in actions">
+	        <td>{{ $index + 1 }}</td>
+	        <td>{{ item.owner }}</td>
+	        <td>{{ item.desc }}</td>
+	        <td>{{ item.kpi }}</td>
+	        <td>{{ item.progress }}</td>
+	        <td><md-button class="md-icon-button" 
+	        	 href="#dash/progress/{{ item._id }}"
+	        	md-colors="{background: 'grey-800'}">
+	        	<i class="material-icons">edit</i>
+	         </md-button></td>
+	      </tr>
+       </thead>
+       <tbody>
+      <tbody>
+   	 </table>
+   </md-card-content>
+</md-card>

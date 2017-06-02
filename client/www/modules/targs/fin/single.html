@@ -1,0 +1,163 @@
+<md-card>
+			<md-toolbar md-colors="{background: 'grey-800' }">
+			<div class="md-toolbar-tools">
+			<h2 ><span>{{ strat.desc }}</span></h2>
+				<span flex></span>
+		</div>
+	</md-toolbar>
+	    <md-card-content>
+
+	    <md-card layout-padding ng-repeat="item in targets">
+	      <div layout="row">
+	         <span class="md-title" flex="70">{{ item.desc }}</span>
+	         <md-button class="md-icon-button" ng-click="isCollapsed = !isCollapsed">
+	         <i class="material-icons">arrow_drop_down</i></md-button>
+	         <md-button class="md-icon-button" ng-click="del(item._id)">
+	         <i class="material-icons">delete</i></md-button>
+	           <md-button class="md-icon-button" ng-click="isCollapsed2 = !isCollapsed2" ng-click="edit(item._id)">
+	         <i class="material-icons">edit</i></md-button>
+          	</div>
+            <div uib-collapse="isCollapsed" md-colors="{background: 'grey-900'}">
+		    <span class="md-body-2">Accountable : {{ item.owner }}</span>
+		    <br />
+		    <span class="md-body-2">Action : {{ item.desc }}</span>
+		    <br />
+		    <span class="md-body-2">K.P.I : {{ item.kpi }}</span>
+		    <br />
+		    <span class="md-body-2">Target Value: {{ item.value }}</span>
+		    <br />
+		    <span class="md-body-2">
+		    	Start Date : {{ item.start_date | date : mediumDate }}</span>
+		    	<br />
+		    <span class="md-body-2">
+		    	End Date : {{ item.end_date | date : mediumDate }}</span>
+	      </div>
+	      <div uib-collapse="isCollapsed2" md-colors="{background: 'green-600'}" >
+
+	      	<form>
+			      	<div layout="row">
+			      	<div  flex="40">
+			      		<label>Accountable</label>
+			      		<input class="form-control input-sm" ng-model="item.owner" 
+			      		placeholder="Description">
+			      	</div>
+			      	&nbsp;
+			      	<div  flex="65">
+			      		<label>Action</label>
+			      		<input class="form-control input-sm" ng-model="item.desc" 
+			      		placeholder="Description">
+			      	</div>
+			      	</div>
+			      	&nbsp;
+			      	<div layout="row">
+			      	<div flex="50">
+			      		<label>KPI</label>
+			      		<input class="form-control input-sm" ng-model="item.kpi" 
+			      		placeholder="Description">
+			      	</div>
+			      </div>
+			      &nbsp;
+			      
+			      	<div layout="row">
+			      		<md-divider></md-divider>
+			      	<div flex="35">
+			      		<label>Measure By </label>
+			      		<select class="form-control" ng-model="item.measure">
+			      			<option value="#"> # </option>
+			      			<option value="Ksh"> Ksh </option>
+			      			<option value="%"> % </option>
+			      		</select>
+			      	</div>
+			      	&nbsp;
+			      	<div flex="35">
+			      		<label>Value </label>
+			      		<input class="form-control input-sm" ng-model="item.value" placeholder="Value">
+			      	</div>
+			      </div>
+                     <br />
+                     <div layout="row"  layout="padding">
+			      	<div flex="35">
+			      	<label>Start Year </label>
+			      	<md-datepicker ng-model="item.end_date"></md-datepicker>
+			       </div>
+			      	<div flex="35">
+			      	<label>End Year </label>
+			      	<md-datepicker ng-model="item.start_date"></md-datepicker>
+			       </div>
+			   
+				 <md-button class="md-primary md-raised"
+				  md-colors="{background: 'grey-800'}"
+				  ng-click="update(item)">update</md-button>
+			  </div>
+			    
+			      </form>
+		    
+	      </div> 
+	     </md-card>
+	     
+	     <md-card layout-padding>
+	     <uib-accordion close-others="oneAtATime">
+	       <div uib-accordion-group class="panel-success" heading="New Target Action" >
+			       
+			      <form>
+			      	<div layout="row">
+			      	<div  flex="40">
+			      		<label>Accountable</label>
+			      		<input class="form-control input-sm" ng-model="targ.owner" 
+			      		placeholder="Description">
+			      	</div>
+			      	&nbsp;
+			      	<div  flex="65">
+			      		<label>Action</label>
+			      		<input class="form-control input-sm" ng-model="targ.desc" 
+			      		placeholder="Description">
+			      	</div>
+			      	</div>
+			      	&nbsp;
+			      	<div layout="row">
+			      	<div flex="50">
+			      		<label>KPI</label>
+			      		<input class="form-control input-sm" ng-model="targ.kpi" 
+			      		placeholder="Description">
+			      	</div>
+			      </div>
+			      &nbsp;
+			      
+			      	<div layout="row">
+			      		<md-divider></md-divider>
+			      	<div flex="35">
+			      		<label>Measure By </label>
+			      		<select class="form-control" ng-model="targ.measure">
+			      			<option value="#"> # </option>
+			      			<option value="Ksh"> Ksh </option>
+			      			<option value="%"> % </option>
+			      		</select>
+			      	</div>
+			      	&nbsp;
+			      	<div flex="35">
+			      		<label>Value </label>
+			      		<input class="form-control input-sm" ng-model="targ.value" placeholder="Value">
+			      	</div>
+			      </div>
+                     <br />
+                     <div layout="row"  layout="padding">
+			      	<div flex="35">
+			      	<label>Start Year </label>
+			      	<md-datepicker ng-model="targ.end_date"></md-datepicker>
+			       </div>
+			      	<div flex="35">
+			      	<label>End Year </label>
+			      	<md-datepicker ng-model="targ.start_date"></md-datepicker>
+			       </div>
+			  
+				 <md-button class="md-primary md-raised"
+				  ng-click="save(strat._id)">save</md-button>
+			  </div>
+			    
+			      </form>
+			</div>
+		</uib-accordion>  
+	     </md-card>
+
+	  
+	    </md-card>

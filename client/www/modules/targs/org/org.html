@@ -1,0 +1,208 @@
+<div layout="row" layout-padding>
+	<div flex="35">
+		<div layout-align="center" layout-padding>
+			<p class="md-display-2" md-colors="{color: 'blue-A400' }">Organizational Strategy</p>
+		</div>
+		
+		<div layout-padding>
+			<md-divider></md-divider>
+		<P class="md-title">Points to consider.</P>
+		 <p class="md-body-1">1. Do I see myself as an employee of my own business?.</p>
+		 <p class="md-body-1">2. Do I understand the responsibilities that I should fulfill ?
+		       </p>
+<p class="md-body-1">3. Do I understand every position’s job descriptions, goals, responsibilities and how they fit together in my business? </p>
+	</div>
+	</div>
+	<md-divider></md-divider>
+	<div flex="65">
+		<md-card>
+			<md-toolbar md-colors="{background: 'grey-900' }">
+			<div class="md-toolbar-tools">
+			<h2 ><span>Positions</span></h2>
+				<span flex></span>
+		</div>
+	</md-toolbar>
+	    <md-card-content>
+
+	    <md-card layout-padding ng-repeat="item in posns"
+          md-colors="{background: 'amber-A200' }">
+	    <div layout="row">
+	      <span class="md-subhead" flex="50">{{$index+1}}. {{item.posn}} </span>
+	      <span flex="20"></span>
+	      <!--<md-button class="md-icon-button" ng-click="isCollapsed1 = !isCollapsed1"
+	      md-colors="{background: 'grey-800'}">
+	      <i class="material-icons"> add </i>
+	     </md-button> -->
+	      <md-button class="md-icon-button" ng-click="del(item._id)"
+	      md-colors="{background: 'grey-800'}">
+	      <i class="material-icons"> delete </i>
+	     </md-button>
+	     <md-button class="md-icon-button" ng-click="isCollapsed = !isCollapsed"
+	     md-colors="{background: 'grey-800'}">
+	      <i class="material-icons"> edit </i>
+	     </md-button>
+	  </div>
+	      <uib-accordion close-others="oneAtATime">
+	      <div uib-accordion-group class="panel-default" heading="Responsibilities"
+	        md-colors="{background: 'grey-400' }">
+	      	 <br>
+	      	 <div ng-repeat="res in item.resp">
+	      	 	<md-card 
+	      	 	  md-colors="{background: 'amber-A100' }" layout-padding>
+	      	      <span class="md-body-2">{{$index+1}}. {{res.resp}}</span>
+	      	    </md-card>
+	      	</div>
+	      </div>
+	  </uib-accordion>
+		  <uib-accordion close-others="oneAtATime">
+		      <div uib-accordion-group class="panel-default"
+		          md-colors="{background: 'grey-400' }"
+		       heading="Key Performance Indicators">
+		      	 <br>
+		      	 <md-card ng-repeat="kpi in item.kpis"
+		      	  md-colors="{background: 'amber-A100' }" layout-padding>
+		      	 <span class="md-body-2">{{$index+1}}. {{kpi.kpis}}</span>
+		      	</md-card>
+		      </div>
+		  </uib-accordion>
+
+		  <!--target
+		  <div uib-collapse="isCollapsed1" md-colors="{background: 'grey-100'}"
+		       layout-padding>
+		  	  <div layout-padding>
+		  	  	 <span class="md-title">Targets</span>
+		  	  </div>
+		  	  <md-divider></md-divider>
+
+		  	  <div layout="row">
+		  	  	<div flex="40">
+			  	  <md-select ng-model="targ.kpi">
+	               <md-option ng-value="customer" ng-repeat="kpi in item.kpis">
+	               {{kpi.kpis}}</md-option>
+	              </md-select>
+		  	  	</div>
+		  	  	<div flex="40">
+			  	  <md-select ng-model="targ.kpi">
+	               <md-option ng-value="customer" ng-repeat="kpi in item.kpis">
+	               {{kpi.kpis}}</md-option>
+	              </md-select>
+		  	  	</div>
+		  	  </div>
+
+		  	  
+		  </div> -->
+
+		  <!--editing -->
+		  <div uib-collapse="isCollapsed" md-colors="{background: 'grey-600'}">
+
+		  	<md-card layout-padding md-colors="{background: 'amber-A400'}">
+		     <div layout="row">
+			  <div flex="90">
+		      <input class="form-control" ng-model="item.posn">
+		  </div>
+	     </div>
+	      <uib-accordion close-others="oneAtATime">
+	      <div uib-accordion-group class="panel-default" heading="Responsibilities"
+	      md-colors="{background: 'grey-700'}">
+	      	  <md-card ng-repeat="resp in item.resp"
+	      	           md-colors="{background: 'amber-A400'}" layout-padding>
+	      	 <span class="md-body-2">{{$index+1}}. {{resp.resp}}</span>
+	      	  <md-button class="md-icon-button" ng-click="rem(item._id, resp.resp)">
+	      <i class="material-icons"> delete </i>
+	     </md-button>
+	      	 </md-card>
+	      <div layout="row" layout-padding md-colors="{background: 'grey-300'}">
+		     <div flex="10">
+		      <md-button class="md-icon-button" ng-click="newR(item._id, r)">
+		      <i class="material-icons">add_black</i>
+		      </md-button>
+		     </div>
+		  <div flex="90">
+	      <input class="form-control" ng-model="r.resp">
+	  </div>
+	     </div>
+	      </div>
+	  </uib-accordion>
+	   <uib-accordion close-others="oneAtATime">
+	      <div uib-accordion-group class="panel-default"
+	        md-colors="{background: 'grey-700'}" heading="K.P.Is">
+	      	    <md-card ng-repeat="kpi in item.kpis"
+	      	     md-colors="{background: 'amber-A400'}" layout-padding>
+	      	 <span class="md-body-2">{{$index+1}}. {{kpi.kpis}}</span>
+	      	 <md-button class="md-icon-button" ng-click="remk(item._id, kpi.kpis)">
+	      <i class="material-icons"> delete </i>
+	      	 </md-card>
+	      	   <div layout="row" layout-padding md-colors="{background: 'grey-300'}">
+		     <div flex="10">
+		      <md-button class="md-icon-button" ng-click="newK(item._id, K)"><md-icon>add_black</md-icon></md-button>
+		     </div>
+		  <div flex="90">
+	      <input class="form-control" ng-model="K.kpis">
+	  </div>
+	     </div>
+	      	 
+	      </div>
+	  </uib-accordion>
+	       <md-button class="md-icon-button"
+	       md-colors="{background: 'grey-800'}" ng-click="update(item)">
+	       <i class="material-icons">add_black</i></md-button>
+	     </md-card>
+
+	  
+	    </md-card>
+
+
+		  </div>
+
+
+	     </md-card>
+
+
+	     
+	     <md-card layout-padding  md-colors="{background: 'grey-500' }">
+	     <div layout="row">
+		  <div flex="90">
+	      <input class="form-control" ng-model="posn">
+	  </div>
+	     </div>
+	      <uib-accordion close-others="oneAtATime">
+	      <div uib-accordion-group class="panel-default" heading="Responsibilities">
+	      	  <md-card ng-repeat="resp in resps" layout-padding>
+	      	 <span class="md-body-2">{{$index+1}}. {{resp.resp}}</span>
+	      	 </md-card>
+	      <div layout="row">
+		     <div flex="10">
+		      <md-button class="md-icon-button" ng-click="resp()"><md-icon>add_black</md-icon></md-button>
+		     </div>
+		  <div flex="90">
+	      <input class="form-control" ng-model="R.resp">
+	  </div>
+	     </div>
+	      </div>
+	  </uib-accordion>
+	   <uib-accordion close-others="oneAtATime">
+	      <div uib-accordion-group class="panel-default" heading="K.P.Is">
+	      	    <md-card ng-repeat="kpi in kpiss" layout-padding>
+	      	 <span class="md-body-2">{{$index+1}}. {{kpi.kpi}}</span>
+	      	 </md-card>
+	      	   <div layout="row">
+		     <div flex="10">
+		      <md-button class="md-icon-button" ng-click="kpis()"><md-icon>add_black</md-icon></md-button>
+		     </div>
+		  <div flex="90">
+	      <input class="form-control" ng-model="K.kpis">
+	  </div>
+	     </div>
+	      	 
+	      </div>
+	  </uib-accordion>
+	       <md-button class="md-icon-button"
+	       md-colors="{background: 'grey-800'}" ng-click="save()">
+	       <i class="material-icons">add_black</i></md-button>
+	     </md-card>
+
+	  
+	    </md-card>
+	</div>
+</div>
+

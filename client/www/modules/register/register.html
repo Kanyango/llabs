@@ -1,0 +1,66 @@
+<md-toolbar md-colors="{background: 'green-600' }">
+			  <h2 class="md-toolbar-tools">Lengo Labs</h2>
+		    </md-toolbar>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<md-card>
+			<md-toolbar  md-colors="{background: 'grey-800' }">
+			  <h2 class="md-toolbar-tools">Business Account</h2>
+		    </md-toolbar>
+		    <md-content layout-padding>
+			<form class="form-horizontal" name="register"> 
+
+				<md-input-container class="md-block">
+					<label>Email</label>
+					<input type="email" ng-model="user.username" name="username"
+					minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/">
+					<div ng-messages="register.username.$error" role="alert">
+		          <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+		            Your email must be between 10 and 100 characters long and look like an e-mail address.
+		          </div>
+        	 </div>
+			   </md-input-container>
+
+			   <md-input-container class="md-block">
+					<label>Password</label>
+			<input type="password" required ng-model="user.password" 
+			name="pass" minlength="8" >
+					<div ng-messages="register.pass.$error" role="alert">
+		          <div ng-message-exp="['required', 'minlength']">
+		            Your Password must have a minimum of 8 characters.
+		          </div>
+		      </div>
+			   </md-input-container>
+
+			   <md-input-container class="md-block">
+					<label>Confirm Password</label> 
+					<input type="password" required ng-model="user.conf" name="conf"
+					 ng-pattern="{{user.password}}">
+					 <div ng-messages="register.conf.$error" role="alert">
+					 	<div ng-message-exp="['required', 'pattern']">
+				            Passwords dont Match!!.
+				          </div>
+					 </div>
+			   </md-input-container>
+
+			   <md-input-container class="md-block">
+					<label>Phone</label>
+					<input type="tel" ng-model="user.phone" name="phone"
+					minlength="10" maxlength="15" ng-pattern="/^[0-9]*$/" >
+				 <div ng-messages="register.phone.$error" role="alert">
+		          <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+		            Your phone number must be 10 and 15 characters long and enter your legit
+		             number.
+		          </div>
+        	   </div>
+			   </md-input-container>
+
+			<md-button class="md-raised md-primary" ng-disabled="register.$invalid"
+			ng-click="signup()">Sign Up</md-button>
+			</form>
+		 </md-content>
+		</md-card>
+		</div>
+	</div>
+</div>

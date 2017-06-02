@@ -1,0 +1,195 @@
+<md-subheader>
+ <md-button class="md-raised" ui-sref="dash.tatrics"
+            md-colors="{background: 'grey-800' }">
+  view metrics 
+ </md-button>
+</md-subheader>
+
+<div layout="row">
+  <div flex="30">
+    <md-card>
+    <md-card-title md-colors="{background: 'grey-800' }">
+            <span class="md-title">Complete Tasks</span>
+    </md-card-title>
+
+    <md-card-content id="scrollable" md-colors="{background: 'grey-600' }">
+                  <md-list flex>
+                   <md-list-item class="md-3-line" 
+                        md-colors="{background: 'amber-A200'}"
+                        ng-repeat="item in complete" ng-click="null">
+                  <div class="md-list-item-text" layout="column">
+                    <h3 class="md-body-1">Accountable: {{ item.acc }}</h3>
+                    <h4 class="md-body-2">Action: {{ item.action }}</h4>
+                  <p class="md-caption">Deadline: {{ item.dead | date : mediumDate }}</p>
+                </div>
+                 <md-button class="md-icon-button" ng-click="del(item.id)"><i class="material-icons">delete</i></md-button>
+                
+                <md-divider ></md-divider>
+                </md-list-item>
+                  
+                 </md-list>
+          </md-card-content>
+
+  </md-card>
+   <md-card>
+    <md-card-title md-colors="{background: 'grey-800' }">
+            <span class="md-title">Pending Tasks</span>
+    </md-card-title>
+
+    <md-card-content layout-padding id="scrollable"
+                md-colors="{background: 'grey-600' }">
+                  <md-list flex>
+                   <md-list-item class="md-3-line" 
+                       md-colors="{background: 'amber-A200' }"
+                        ng-repeat="item in pending" ng-click="null">
+                  <div class="md-list-item-text" layout="column">
+                    <h3 class="md-body-1">Accountable: {{ item.acc }}</h3>
+                    <h4 class="md-body-2">Action: {{ item.action }}</h4>
+                    <p class="md-caption">Deadline: {{ item.dead | date : mediumDate }}</p>
+                </div>
+                <span flex></span>
+                
+                <md-button class="md-icon-button" ng-click="del(item.id)"><i class="material-icons">delete</i></md-button>
+                <md-button class="md-icon-button"  ng-click="done(item.id)"><i class="material-icons">check</i></md-button>
+                </md-list-item>
+                </md-list-item>
+                  <md-divider ></md-divider>
+                 </md-list>
+          </md-card-content>
+
+  </md-card>
+  </div>
+	<div flex="40">
+     
+      <md-card id="scrollable2">
+      <md-card-title md-colors="{background: 'grey-800' }">
+        	  <span class="md-title">Tasks</span>
+            </md-card-title>
+	      <md-subheader class="md-primary" layout-padding>
+	         <span class="md-title">Today</span>
+	      </md-subheader>
+	       <md-card-content layout-padding id="scrollable" 
+              md-colors="{background: 'grey-600' }">
+                  <md-list flex>
+                   <md-list-item class="md-3-line" 
+                        md-colors="{background: 'amber-A200' }"
+                        ng-repeat="item in todays" ng-click="null">
+                  <div class="md-list-item-text" layout="column">
+                    <h3 class="md-body-1">Accountable: {{ item.acc }}</h3>
+                    <h4 class="md-body-2">Action: {{ item.action }}</h4>
+                    <p class="md-caption">Deadline: {{ item.dead | date : mediumDate }}</p>
+                </div>
+                 
+              
+                <span flex></span>
+                
+                <md-button class="md-icon-button" ng-click="del(item.id)"><i class="material-icons">delete</i></md-button>
+                <md-button class="md-icon-button"  ng-click="done(item.id)"><i class="material-icons">check</i></md-button>
+                </md-list-item>
+                  <md-divider ></md-divider>
+                 </md-list>
+	        </md-card-content>
+
+	        <md-subheader class="md-primary" layout-padding>
+	         <span class="md-title">Tommorow</span>
+	        </md-subheader>
+	         <md-card-content layout-padding id="scrollable"
+            md-colors="{background: 'grey-800' }">
+
+              <md-list flex>
+                   <md-list-item class="md-3-line" 
+                        md-colors="{background: 'amber-A200' }"
+                        ng-repeat="item in tomms" ng-click="null">
+                  <div class="md-list-item-text" layout="column">
+                    <h3 class="md-body-1">Accountable: {{ item.acc }}</h3>
+                    <h4 class="md-body-2">Action: {{ item.action }}</h4>
+                    <p class="md-caption">Deadline: {{ item.dead | date : mediumDate }}</p>
+                </div>
+                <md-button class="md-icon-button" 
+                  ng-click="isCollapsed1 = !isCollapsed1">
+                  <i class="material-icons">edit</i>
+                </md-button>
+                <md-button class="md-icon-button" ng-click="del(item.id)"><i class="material-icons">delete</i></md-button>
+                <md-button class="md-icon-button"
+                 ng-click="done(item.id)">
+                 <i class="material-icons">check</i>
+               </md-button>
+                </md-list-item>
+                  <md-divider ></md-divider>
+                 </md-list>
+ 	        </md-card-content>
+	        <md-subheader class="md-primary" layout-padding>
+	         <span class="md-title">Later</span>
+	        </md-subheader>
+	         <md-card-content layout-padding id="scrollable"
+            md-colors="{background: 'grey-600' }">
+	             <md-list flex>
+                   <md-list-item class="md-3-line" 
+                        md-colors="{background: 'amber-A200' }"
+                        ng-repeat="item in laters" ng-click="null">
+                  <div class="md-list-item-text" layout="column">
+                    <h3 class="md-body-1">Accountable: {{ item.acc }}</h3>
+                    <h4 class="md-body-2">Action: {{ item.action }}</h4>
+                    <p class="md-caption">Deadline: {{ item.dead | date : mediumDate }}</p>
+                </div>
+                <md-button class="md-icon-button" 
+                ><i class="material-icons">edit</i></md-button>
+                <md-button class="md-icon-button" ng-click="del(item.id)"><i class="material-icons">delete</i></md-button>
+                <md-button class="md-icon-button"><i class="material-icons">check</i></md-button>
+                </md-list-item>
+                  <md-divider ></md-divider>
+                 </md-list>
+	        </md-card-content>
+	     
+      </md-card>
+
+
+    </div>
+	<div flex="30">
+     <md-card>
+		   <md-card-title md-colors="{background: 'grey-800' }">
+        	  <span class="md-title">Task Card</span>
+            </md-card-title>
+
+        <md-card-content layout-padding md-colors="{background: 'grey-100' }">
+       <form>
+        
+        <div flex="100">
+          <label>Title</label>
+          <input class="form-control" ng-model="task.title">
+        </div>
+
+        <div flex="100">
+          <label>Who is accountable ?</label>
+          <input ng-model="task.acc" class="form-control">
+        </div>
+
+        <div flex="100">
+          <label>Action</label>
+          <input ng-model="task.action" class="form-control">
+        </div>
+        <br />
+        <div flex="100">
+          <label>Start Date</label>
+          <md-datepicker ng-model="task.start_date"></md-datepicker>
+        </div>
+        <br />
+        <div flex="100">
+          <label>Deadline</label>
+          <md-datepicker ng-model="task.dead"></md-datepicker>
+        </div>
+         <div flex="100" hidden>
+          <label>Done</label>
+          <input ng-model="task.done"  class="form-control">
+        </div>
+	        <md-button  ng-click="save()" class="md-raised" md-colors="{background: 'green-700'}">
+    	      SAVE
+    	    </md-button>
+    	</form>
+        </md-card-content>
+      </md-card> 
+	</div>
+</div>
+
+
+  

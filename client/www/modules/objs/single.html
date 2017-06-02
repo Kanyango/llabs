@@ -1,0 +1,294 @@
+<md-card>
+
+ <md-toolbar>
+  <div class="md-toolbar-tools" md-colors="{background: 'grey-800'}">
+   <span class="md-title">{{ obj.desc }} </span>
+   <span flex></span>
+   <span class="md-title">Timeframe {{obj.start_date }} to {{ obj.end_date }}</span>
+  </div>
+ </md-toolbar>
+
+  <md-card-content layout-padding>
+
+    <md-card layout-padding ng-repeat="strat in obj.strats"
+             md-colors="{background: 'amber-A200'}">
+      <span class="md-title">{{ strat.desc }}</span>
+                 
+                 <div layout="row">
+                 <md-button class="md-icon-button"
+	             ng-click="delStrat(strat._id)">
+	         	<i class="material-icons">delete</i>
+	            </md-button>
+
+	            <md-button class="md-icon-button"  
+	            ng-click="isCollapsed3 = !isCollapsed3">
+	         	<i class="material-icons">edit</i>
+	            </md-button>
+
+                 </div>
+                
+
+			      <div uib-collapse="isCollapsed3" layout-padding>
+			            <md-card layout-padding md-colors="{background: 'amber-A400' }">
+						     <div layout="row">
+						     	    <div flex="10">
+								      <md-button class="md-icon-button"
+								        ng-click="editStrat(strat)"
+								      md-colors="{background: 'grey-900' }">
+								      <i class="material-icons">add_black</i>
+								      </md-button>
+								     </div>
+								     <div flex="90">
+							           <input class="form-control" ng-model="strat.desc" placeholder="add sub activity">
+							         </div>
+							     </div>
+						    </md-card>
+			         </div>
+
+	      
+
+	         <md-card layout-padding ng-repeat="item in strat.targets" 
+	                      md-colors="{background: 'grey-800'}" >
+
+
+	         <md-card-content layout="row" >
+	         	<span flex="70" class="md-title">{{ item.desc }}</span>
+	         	<span flex></span>
+	         	<md-button class="md-icon-button"  ng-click="isCollapsed = !isCollapsed">
+	         	<i class="material-icons">edit</i>
+	            </md-button>
+	            
+	            <md-button class="md-icon-button"ng-click="isCollapsed2 = !isCollapsed2">
+	         	<i class="material-icons">add</i>
+	            </md-button>
+
+	            <md-button class="md-icon-button"
+	             ng-click="del(item._id)">
+	         	<i class="material-icons">delete</i>
+	            </md-button>
+	          </md-card-content>
+
+	            <!-- edit activity -->
+	           <div uib-collapse="isCollapsed2" md-colors="{background: 'grey-100'}" 
+	           layout-padding>
+
+	           	<div layout-padding>
+	           	       <span class="md-title">Set Annual Targets</span>
+	             </div>
+
+	            <div layout="row" ng-repeat="pers in item.pery" layout-padding>
+                    
+                    <div flex="30">
+                      <label>Target</label>
+                      <input class="form-control" ng-model="pers.targ">
+                    </div>
+                    <div flex="30">
+                      <label>Start Date</label>
+                      <input class="form-control" ng-model="pers.start_date">
+                    </div>
+                    <div flex="30">
+                    	<label>End Date</label>
+                      <input class="form-control" ng-model="pers.end_date">
+                    </div>
+                      
+			            <md-button class="md-icon-button"
+			             ng-click="delPer(pers.id, pers.targ, pers.start_date, pers.end_date)">
+			         	<i class="material-icons">delete</i>
+			            </md-button>
+
+			      </div>
+			           <md-divider></md-divider>
+			           	 <div layout="row" layout-padding>
+		                   <div flex="40">
+		                   	 <label>Target</label>
+		                   	 <input ng-model="pery.targ" class="form-control">
+		                   </div>
+		               </div>
+               <div layout="row" layout-padding>
+                   <div flex="50">
+                   	 <label>Start Date</label>
+                   	 <md-datepicker ng-model="pery.start_date"></md-datepicker>
+                   </div>
+                    <div flex="50">
+                   	 <label>End Date</label>
+                   	 <md-datepicker ng-model="pery.end_date"></md-datepicker>
+                   </div>
+	           	 </div>
+		           	 <md-button md-colors="{background: 'grey-900'}"
+		           	         ng-click="upery(item._id, pery)">
+		           	 SAVE
+		           	 </md-button>
+	           </div>
+
+	           
+	             <div uib-collapse="isCollapsed" md-colors="{background: 'grey-100'}">
+	           	  <form>
+			      	<div layout="row">
+			      	<div  flex="40">
+			      		<label>Who is accountable</label>
+			      		<input class="form-control input-sm" ng-model="item.owner" 
+			      		placeholder="Description">
+			      	</div>
+			      	&nbsp;
+			      	<div  flex="65">
+			      		<label>Action to be taken</label>
+			      		<input class="form-control input-sm" ng-model="item.desc" 
+			      		placeholder="Description">
+			      	</div>
+			      	</div>
+			      	&nbsp;
+			      	<div layout="row">
+			      	<div flex="50">
+			      		<label>KPI</label>
+			      		<input class="form-control input-sm" ng-model="item.kpi" 
+			      		placeholder="Description">
+			      	</div>
+			      </div>
+			      &nbsp;
+			      
+                   <div layout-padding>
+                   	<p>Overall Target</p>
+			      	<div layout="row">
+			      		<md-divider></md-divider>
+			      	<div flex="35">
+			      		<label>Measure By </label>
+			      		<select class="form-control" ng-model="item.measure">
+			      			<option value="#"> # </option>
+			      			<option value="Ksh"> Ksh </option>
+			      			<option value="%"> % </option>
+			      		</select>
+			      	</div>
+			      	&nbsp;
+			      	<div flex="35">
+			      		<label>Value </label>
+			      		<input class="form-control input-sm" ng-model="item.value" placeholder="Value">
+			      	</div>
+			      </div>
+                     <br />
+                 <div layout="row"  layout="padding">
+			      	<div flex="35">
+			      	<label>Start Year </label>
+			      	<input ng-model="obj.start_date" class="form-control" readonly>
+			       </div>
+			          &nbsp;&nbsp;
+			      	<div flex="35">
+			      	<label>End Year </label>
+			      	<input ng-model="obj.end_date" class="form-control" readonly>
+			       </div>
+			   </div>
+			        <span class="md-title">Periodic Targets</span>
+			      </div>
+			      <md-button class="md-raised" md-colors="{background: 'grey-800'}" 
+					             ng-click="update(item , obj)">
+					    UPDATE
+					</md-button>
+			      
+					  
+			  	    
+			      </form>
+	           </div>
+	         <!-- end activity edit -->
+	        
+
+
+	          </md-card>
+             
+	         <uib-accordion close-others="oneAtATime">
+	         <div uib-accordion-group class="panel-default" heading="New Target Action"
+	         md-colors="{background: 'grey-200'}">
+	         	<form>
+			      	<div layout="row">
+			      	<div  flex="30">
+			      		<label>Who is accountable ? </label>
+			      		<select ng-model="targ.owner"  class="form-control input-sm"
+			              ng-options="owner.posn as owner.posn for owner in posns" 
+			              name="owner" >  
+			             </select> 
+			      	</div>
+			      	&nbsp;
+			      	<div flex="20">
+			      		<md-button class="md-raised" 
+			      		 href="#dash/organisational"
+			      		  md-colors="{background: 'grey-800'}">
+			      		create position</md-button>
+			      	</div>
+			      	&nbsp;
+			      	<div  flex="65">
+			      		<label>Action to be taken</label>
+			      		<input class="form-control input-sm" ng-model="targ.desc" 
+			      		placeholder="Description">
+			      	</div>
+			      	</div>
+			      	&nbsp;
+			      	<div layout="row">
+			      	<div flex="50">
+			      		<label>KPI</label>
+			      		<input class="form-control input-sm" ng-model="targ.kpi" 
+			      		placeholder="Description">
+			      	</div>
+			      </div>
+			      &nbsp;
+			      
+                   <div class="well" layout-padding>
+                   	<p>Overall Target</p>
+			      	<div layout="row">
+			      		<md-divider></md-divider>
+			      	<div flex="35">
+			      		<label>Measure By </label>
+			      		<select class="form-control" ng-model="targ.measure">
+			      			<option value="#"> # </option>
+			      			<option value="Ksh"> Ksh </option>
+			      			<option value="%"> % </option>
+			      		</select>
+			      	</div>
+			      	&nbsp;
+			      	<div flex="35">
+			      		<label>Value </label>
+			      		<input class="form-control input-sm" ng-model="targ.value" placeholder="Value">
+			      	</div>
+			      </div>
+                     <br />
+                     <div layout="row"  layout="padding">
+			      	<div flex="35">
+			      	<label>Start Year </label>
+			      	<input ng-model="obj.start_date" class="form-control" readonly>
+			       </div>
+			          &nbsp;&nbsp;
+			      	<div flex="35">
+			      	<label>End Year </label>
+			      	<input ng-model="obj.end_date" class="form-control" readonly>
+			       </div>
+			   </div>
+			     
+			  <md-button
+			       md-colors="{background: 'grey-600' }"
+			       class="md-raised" 
+			       ng-click="save(strat._id, strat.wide, obj)">
+			       save
+			  </md-button>
+			  	   </div>
+			      </form>
+	         </div>
+	      </uib-accordion>
+   		</md-card>
+   
+
+    <md-card layout-padding md-colors="{background: 'amber-A400' }">
+     <div layout="row">
+     	    <div flex="10">
+		      <md-button class="md-icon-button" ng-click="addStrat(obj._id)"
+		      md-colors="{background: 'grey-900' }">
+		      <i class="material-icons">add_black</i>
+		      </md-button>
+		     </div>
+		     <div flex="90">
+	           <input class="form-control" ng-model="s.desc" placeholder="add sub activity">
+	         </div>
+	     </div>
+    </md-card>
+
+
+
+  </md-card-content>
+
+</md-card>

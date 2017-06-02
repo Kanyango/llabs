@@ -1,0 +1,258 @@
+<md-subhead>
+  <div layout="row">
+    <span class="md-headline">Dashboard</span>
+  </div>
+</md-subhead>
+<br />
+<br />
+
+<div layout="row">
+
+  <md-card flex="25">
+    <md-toolbar md-colors="{background: 'grey-800' }">
+      <div class="md-toolbar-tools">
+         <span class="md-tite">Strengths</span>
+         <span flex></span>
+         <md-button class="md-icon-button" 
+          href="#dash/profile"
+          md-colors="{background: 'grey-600' }">
+           <i class="material-icons"> chevron_right </i>
+         </md-button>
+      </div>
+    </md-toolbar>
+    <md-card-content class="text-center" md-colors="{background: 'grey-600' }">
+       <span class="md-display-2">{{ slen }}</span>
+    </md-card-content>
+  </md-card>
+
+  <md-card flex="25">
+    <md-toolbar md-colors="{background: 'grey-800' }">
+      <div class="md-toolbar-tools">
+         <span class="md-title">Weaknesses</span>
+         <span flex></span>
+         <md-button class="md-icon-button"
+          href="#dash/profile" md-colors="{background: 'grey-600' }">
+           <i class="material-icons">chevron_right </i>
+         </md-button>
+      </div>
+    </md-toolbar>
+     <md-card-content class="text-center" md-colors="{background: 'grey-600' }">
+       <span class="md-display-2">{{ wlen }}</span>
+       <br />
+
+    </md-card-content>
+  </md-card>
+
+  <md-card flex="25">
+    <md-toolbar md-colors="{background: 'grey-800' }">
+      <div class="md-toolbar-tools">
+         <span class="md-tite">Opportunities</span>
+         <span flex></span>
+         <md-button class="md-icon-button"
+          href="#dash/profile" md-colors="{background: 'grey-600' }">
+           <i class="material-icons"> chevron_right </i>
+         </md-button>
+      </div>
+    </md-toolbar>
+     <md-card-content class="text-center" md-colors="{background: 'grey-600' }">
+       <span class="md-display-2">{{ olen }}</span>
+    </md-card-content>
+  </md-card>
+
+    <md-card flex="25">
+    <md-toolbar md-colors="{background: 'grey-800' }">
+      <div class="md-toolbar-tools">
+         <span class="md-tite">Threats</span>
+         <span flex></span>
+         <md-button class="md-icon-button"
+           href="#dash/profile" md-colors="{background: 'grey-600' }">
+           <i class="material-icons"> chevron_right </i>
+         </md-button>
+      </div>
+    </md-toolbar>
+     <md-card-content class="text-center" md-colors="{background: 'grey-600' }">
+       <span class="md-display-2">{{ tlen }}</span>
+    </md-card-content>
+  </md-card>
+
+</div>
+
+<!-- Tasks -->
+
+<div layout="row">
+  <md-card flex="33">
+    <md-card-header>
+      <span class="md-title"md-colors="{color: 'green-700' }">Complete Tasks</span>
+      <span flex></span>
+      <md-button class="md-icon-button" md-colors="{background: 'grey-600' }"
+         href="#dash/tasks">
+           <i class="material-icons"> chevron_right </i>
+         </md-button>
+    </md-card-header>
+     <md-card-content md-colors="{background: 'grey-600' }">
+      
+        <div ng-repeat="comp in complete" ng-show="complete.length > 0">
+            <span class="md-body-1">{{$index + 1}}.{{ comp.action }} </span>
+        </div>
+
+        <div  ng-show="complete.length <= 0" class="text-center">
+            <span class="md-display-2"> 0 </span>
+            <md-divider></md-divider>
+          </div>
+       
+    </md-card-content>
+  </md-card>
+  <md-card flex="33">
+    <md-card-header>
+      <span class="md-title"md-colors="{color: 'green-700' }">Pending Tasks</span>
+      <span flex></span>
+      <md-button class="md-icon-button" md-colors="{background: 'grey-600' }"
+           href="#dash/tasks">
+           <i class="material-icons"> chevron_right </i>
+         </md-button>
+    </md-card-header>
+     <md-card-content md-colors="{background: 'grey-600' }">
+       
+         <div ng-repeat="pend in pending" ng-show="pending.length > 0">
+            <span class="md-body-1">{{$index + 1}}.{{ pend.action }} </span>
+            <md-divider></md-divider>
+          </div>
+          
+          <div  ng-show="pending.length <= 0" class="text-center">
+            <span class="md-display-2"> 0 </span>
+          </div>
+        
+    </md-card-content>
+  </md-card>
+  <md-card flex="33">
+    <md-card-header>
+      <span class="md-title"md-colors="{color: 'green-700' }">New Tasks</span>
+      <span flex></span>
+      <md-button class="md-icon-button" md-colors="{background: 'grey-600' }"
+           href="#dash/tasks">
+           <i class="material-icons"> chevron_right </i>
+         </md-button>
+    </md-card-header>
+     <md-card-content md-colors="{background: 'grey-600' }">
+       <div ng-repeat="tod in todays" ng-show="todays.length > 0">
+            <span class="md-body-1">{{$index + 1}}.{{ tod.action }} </span>
+            <md-divider></md-divider>
+          </div>
+          <div  ng-show="todays.length <= 0" class="text-center">
+            <span class="md-display-2"> 0 </span>
+          </div>
+    </md-card-content>
+  </md-card>
+</div>
+
+<!-- Innovations -->
+<div layout="row">
+  <md-card flex="33">
+    <md-card-header>
+      <span class="md-title"md-colors="{color: 'green-700' }">Innovations</span>
+      <span flex></span>
+      <md-button class="md-icon-button" md-colors="{background: 'grey-600' }"
+          href="#dash/innovations">
+           <i class="material-icons"> chevron_right </i>
+         </md-button>
+    </md-card-header>
+     <md-card-content md-colors="{background: 'grey-600' }">
+
+      <div ng-repeat="inn in inno" ng-show="inno.length > 0">
+            <span class="md-body-1">{{$index + 1}}.{{ inn.action }} </span>
+        </div>
+
+        <div  ng-show="inno.length <= 0" class="text-center">
+            <span class="md-display-2"> 0 </span>
+            <md-divider></md-divider>
+          </div>
+       
+    </md-card-content>
+  </md-card>
+
+   <md-card flex="65">
+    <md-card-header>
+      <span class="md-title"md-colors="{color: 'green-700' }">Top Performing Targets</span>
+      <span flex></span>
+      <md-button class="md-icon-button" md-colors="{background: 'grey-600' }">
+           <i class="material-icons"> chevron_right </i>
+         </md-button>
+    </md-card-header>
+     <md-card-content md-colors="{background: 'grey-600' }">
+      <div ng-repeat="item in finale">
+       <span class="md-body-2">{{ item.kpi }}</span>
+       <span flex="40"><uib-progressbar value="item.value" type="success">{{item.value}}/100</uib-progressbar>
+        </span>
+      </div>
+     
+       
+    </md-card-content>
+  </md-card>
+  
+
+</div>
+<!-- visions , mission & values -->
+
+<!--<div layout="row">
+  <md-card flex="33">
+    <md-card-header>
+      <span class="md-title"md-colors="{color: 'green-700' }">Vision</span>
+      <span flex></span>
+      <md-button class="md-icon-button" md-colors="{background: 'grey-600' }">
+           <i class="material-icons"> chevron_right </i>
+         </md-button>
+    </md-card-header>
+     <md-card-content md-colors="{background: 'grey-600' }">
+       <span class="md-body-2">1.Sending 5 emails to customers</span>
+       <br>
+       <span class="md-body-2">2.Send invoice to R&R Supplies</span>
+       <br />
+       <span class="md-body-2">3.Meeting with MK Advert Agency</span>
+       <br />
+       <span class="md-body-2">4.Completed new Designer interviews</span>
+       <br />
+       <span class="md-body-2">5.Made 2 new customers.</span>
+    </md-card-content>
+  </md-card>
+  <md-card flex="33">
+    <md-card-header>
+      <span class="md-title"md-colors="{color: 'green-700' }">Mission</span>
+      <span flex></span>
+      <md-button class="md-icon-button" md-colors="{background: 'grey-600' }">
+           <i class="material-icons"> chevron_right </i>
+         </md-button>
+    </md-card-header>
+     <md-card-content md-colors="{background: 'grey-600' }">
+       <span class="md-body-2">1.Carry out a SWOT analysis on our competitors.</span>
+       <br>
+       <span class="md-body-2">2.Pay the electricity bill.</span>
+       <br />
+       <span class="md-body-2">3.Meet with our interior designers.</span>
+       <br />
+       <span class="md-body-2">4.Analyse our client base.</span>
+       <br />
+       <span class="md-body-2">5.Meet with Riara Hardware.</span>
+    </md-card-content>
+  </md-card>
+  <md-card flex="33">
+    <md-card-header>
+      <span class="md-title"md-colors="{color: 'green-700' }">Values</span>
+      <span flex></span>
+      <md-button class="md-icon-button" md-colors="{background: 'grey-600' }">
+           <i class="material-icons"> chevron_right </i>
+         </md-button>
+    </md-card-header>
+     <md-card-content md-colors="{background: 'grey-600' }">
+       <span class="md-body-2">1.Carry out a SWOT analysis on our competitors.</span>
+       <br>
+       <span class="md-body-2">2.Pay the electricity bill.</span>
+       <br />
+       <span class="md-body-2">3.Meet with our interior designers.</span>
+       <br />
+       <span class="md-body-2">4.Analyse our client base.</span>
+       <br />
+       <span class="md-body-2">5.Meet with Riara Hardware.</span>
+    </md-card-content>
+  </md-card>
+</div> -->
+

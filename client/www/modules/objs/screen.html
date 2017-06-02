@@ -1,0 +1,62 @@
+<div layout="row">
+  <md-subheader class="md-primary">
+    <div><span class="md-headline">Metrics</span></div>
+  </md-subheader>
+</div>
+
+<div layout="row">
+
+  <md-toolbar layout="row" layout-align="center center" class="md-toolbar-tools" md-colors="{background: 'grey-800' }"> 
+  <div class="md-toolbar-tools">
+      <span class="md-headline"> {{ wides.desc }}</span>
+    </div>
+</md-toolbar>
+
+</div>
+<br>
+<br>
+<div layout="row">
+  <span flex="10" class="md-body">Filter Date</span>
+<md-datepicker ng-model="start_date" md-placeholder="Start Date" flex="30">
+          </md-datepicker>
+          <md-datepicker ng-model="end_date" md-placeholder="End Date" flex="30">
+          </md-datepicker>
+          <md-button flex="10" class="md-primary md-raised" ng-click="view()">View</md-button>
+  </div>
+<md-divider></md-divider>
+<br>
+<br>
+<div layout="row">
+<span class="md-caption">Annual Performance ({{ starter }} - {{ender}}).</span>
+&nbsp;&nbsp;
+<span flex="70"><uib-progressbar value="progress" type="danger" max="max">{{progress}} / {{max}}
+</uib-progressbar>
+</span>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6" ng-repeat="strat in strats">
+      <md-card>
+     <md-subheader class="md-no-sticky" md-colors="{background: 'blue-grey-900'}">
+        {{strat.desc}}</md-subheader>
+          <md-card-content>
+          <span flex="45"><uib-progressbar value="strat.progress" type="warning" max="strat.max ">{{strat.progress | number: 2}} / {{strat.max}}</uib-progressbar>
+          </md-card-content>
+      </md-card>
+    </div>
+  </div>
+</div>
+
+<hr>
+<div class="container">
+  <span class="md-title">K.P.I PERFORMANCE</span>
+  <hr>
+  <div class="row">
+    <canvas id="line" class="chart chart-line" chart-data="data" height="100"
+    chart-colors="['#78909c', '#546e7a']"
+chart-labels="labels" chart-series="series" chart-options="options"
+chart-dataset-override="datasetOverride" chart-click="onClick">
+</canvas>
+  </div>
+</div>

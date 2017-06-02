@@ -1,0 +1,246 @@
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url('material-design-icons-3.0.1/iconfont/MaterialIcons-Regular.eot'); /* For IE6-8 */
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url('material-design-icons-3.0.1/iconfont/MaterialIcons-Regular.woff2') format('woff2'),
+    url('material-design-icons-3.0.1/iconfont/MaterialIcons-Regular.woff') format('woff'),
+    url('material-design-icons-3.0.1/iconfont/MaterialIcons-Regular.ttf') format('truetype');
+}
+  .material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('roboto/Roboto-Regular.ttf');
+}
+
+.slide.ng-leave         {
+    -webkit-transform-origin: 0% 0%;
+  -webkit-animation: rotateFall 1s both ease-in;
+  -moz-transform-origin: 0% 0%;
+  -moz-animation: rotateFall 1s both ease-in;
+  transform-origin: 0% 0%;
+  animation: rotateFall 1s both ease-in;
+}
+.slide.ng-enter     {  
+    -webkit-animation:scaleUp 0.5s both ease-in;
+  -moz-animation:scaleUp 0.5s both ease-in;
+  animation:scaleUp 0.5s both ease-in;    
+}
+/* rotate and fall */
+@-webkit-keyframes rotateFall {
+  0% { -webkit-transform: rotateZ(0deg); }
+  20% { -webkit-transform: rotateZ(10deg); -webkit-animation-timing-function: ease-out; }
+  40% { -webkit-transform: rotateZ(17deg); }
+  60% { -webkit-transform: rotateZ(16deg); }
+  100% { -webkit-transform: translateY(100%) rotateZ(17deg); }
+}
+@-moz-keyframes rotateFall {
+  0% { -moz-transform: rotateZ(0deg); }
+  20% { -moz-transform: rotateZ(10deg); -moz-animation-timing-function: ease-out; }
+  40% { -moz-transform: rotateZ(17deg); }
+  60% { -moz-transform: rotateZ(16deg); }
+  100% { -moz-transform: translateY(100%) rotateZ(17deg); }
+}
+@keyframes rotateFall {
+  0% { transform: rotateZ(0deg); }
+  20% { transform: rotateZ(10deg); animation-timing-function: ease-out; }
+  40% { transform: rotateZ(17deg); }
+  60% { transform: rotateZ(16deg); }
+  100% { transform: translateY(100%) rotateZ(17deg); }
+}
+
+/* scale up */
+@keyframes scaleUp {
+  from    { opacity: 0.3; transform: scale(0.8); }
+}
+@-moz-keyframes scaleUp {
+  from    { opacity: 0.3; -moz-transform: scale(0.8); }
+}
+@-webkit-keyframes scaleUp {
+  from    { opacity: 0.3; -webkit-transform: scale(0.8); }
+}
+
+/* slide in from the right */
+@keyframes slideInRight {
+  from  { transform:translateX(100%); }
+  to    { transform: translateX(0); }
+}
+@-moz-keyframes slideInRight {
+  from  { -moz-transform:translateX(100%); }
+  to    { -moz-transform: translateX(0); }
+}
+@-webkit-keyframes slideInRight {
+  from  { -webkit-transform:translateX(100%); }
+  to    { -webkit-transform: translateX(0); }
+}
+
+/* slide in from the bottom */
+@keyframes slideInUp {
+  from  { transform:translateY(100%); }
+  to    { transform: translateY(0); }
+}
+@-moz-keyframes slideInUp {
+  from  { -moz-transform:translateY(100%); }
+  to    { -moz-transform: translateY(0); }
+}
+@-webkit-keyframes slideInUp {
+  from  { -webkit-transform:translateY(100%); }
+  to    { -webkit-transform: translateY(0); }
+}
+
+/* slide in from the bottom */
+@keyframes slideOutLeft {
+  to    { transform: translateX(-100%); }
+}
+@-moz-keyframes slideOutLeft {  
+  to    { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes slideOutLeft {
+  to    { -webkit-transform: translateX(-100%); }
+}
+
+/* rotate out newspaper */
+@-webkit-keyframes rotateOutNewspaper {
+  to { -webkit-transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
+}
+@-moz-keyframes rotateOutNewspaper {
+  to { -moz-transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
+}
+@keyframes rotateOutNewspaper {
+  to { transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
+}
+
+.slider {
+  overflow-y: hidden;
+  max-height: 300px; /* approximate max height */
+  transition-property: all;
+  transition-duration: 3s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.slider.closed {
+  max-height: 0;
+
+}
+.slides {
+  overflow-y: hidden;
+  max-height: 300px; /* approximate max height */
+  transition-property: all;
+  transition-duration: 4s;
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.slides.closed {
+  max-height: 0;
+}
+
+p{
+	font-weight: 200;
+}
+
+md-sidenav md-list {
+  padding: 0px 0px 8px 0px;
+}
+md-sidenav
+{
+	width: 25% !important;
+}
+md-sidenav .md-list .md-button {
+  color: inherit;
+  font-weight: 500;
+  text-align: left;
+}
+md-divider{
+
+	color: #fff !important;
+}
+.md-datepicker-calendar-pane
+{
+z-index: 1200;
+}
+.md-select-menu-container {
+  z-index: 1200;
+}
+.modal-content {
+  
+  border-radius: 0px !important;
+  border-color:  #e91e63;
+}
+p {
+
+	font-family: 'Roboto';
+	font-weight: 200;
+}
+h4 , h2 , label
+{
+	font-family: 'Roboto';
+	font-weight:  300;
+}
+input {
+
+	font-family: 'Roboto';
+	font-weight:  300;
+	font-size: 16px;
+}
+th{
+
+	font-family: 'Roboto';
+	font-weight:  300;
+}
+td{
+	font-family: 'Roboto';
+	font-weight : 100;
+}
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+    background-color: #eee;
+    font-size: 17px;
+}
+ul.breadcrumb li {display: inline;}
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+}
+ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+}
+
+#scrollable
+{
+  overflow-y: scroll;
+  height: 200px;
+
+}

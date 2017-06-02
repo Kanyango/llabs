@@ -1,0 +1,82 @@
+<div layout="row" layout-padding>
+	<div flex="35">
+		<div layout-align="center" layout-padding>
+			<p class="md-display-2" md-colors="{color: 'blue-A400' }">Processes & Procedures
+			</p>
+		</div>
+		
+		<div layout-padding>
+			<md-divider></md-divider>
+		<P class="md-title">Points to consider.</P>
+		 <p class="md-body-1">Here you describe a positions procedures and processes of handling work related to their position.</p>
+	</div>
+	</div>
+	<md-divider></md-divider>
+	<div flex="65">
+		<md-card>
+			<md-toolbar md-colors="{background: 'grey-900' }">
+			<div class="md-toolbar-tools">
+			<h2 ><span>Positions</span></h2>
+				<span flex></span>
+		</div>
+	</md-toolbar>
+	    <md-card-content>
+
+	    <md-card layout-padding ng-repeat="item in posns"
+	           md-colors="{background: 'amber-A200' }">
+	    <div layout="row">
+	      <span class="md-subhead" flex="60">{{$index+1}}. {{item.posn}} </span>
+	      <span flex="20"></span>
+	  </div>
+	      <uib-accordion close-others="oneAtATime">
+	      <div uib-accordion-group class="panel-default" heading="Procedures & Processes" md-colors="{background: 'grey-400' }">
+	      	 <br>
+	      	   <uib-accordion close-others="oneAtATime">
+	            <div uib-accordion-group ng-repeat="proc in item.procs"
+	                class="panel-default" heading="{{proc.header}}" 
+	                md-colors="{background: 'grey-600' }">
+	               <md-button class="md-icon-button" ng-click="delProc(proc._id)"
+			      md-colors="{background: 'grey-800'}">
+			      <i class="material-icons"> delete </i>
+			     </md-button>
+	      	 	<md-card  layout-padding ng-repeat="one in proc.procs" 
+	      	 	layout="row" md-colors="{background: 'amber-A200' }">
+	      	      <span class="md-body-2" flex="70">{{$index+1}}. {{one.name}}</span>
+	      	      <md-button class="md-icon-button" ng-click="del(proc._id, one.name)"
+			      md-colors="{background: 'grey-800'}">
+			      <i class="material-icons"> delete </i>
+			     </md-button>
+	      	    </md-card>
+	      	    <md-card layout-padding md-colors="{background: 'amber-600' }">
+	      	      <div layout="row">
+		     <div flex="10">
+		      <md-button class="md-icon-button" ng-click="addProc(proc._id)">
+		      <md-icon>add_black</md-icon></md-button>
+		     </div>
+		  <div flex="90">
+	      <input class="form-control" placeholder="hi" ng-model="pro.name">
+	  </div>
+	     </div>
+	     </md-card>
+	      	  </div>
+	      	</uib-accordion>
+	      	    <md-card layout-padding md-colors="{background: 'amber-600' }">
+	      	      <div layout="row">
+		     <div flex="10">
+		      <md-button class="md-icon-button" ng-click="add(item._id)"><md-icon>add_black</md-icon></md-button>
+		     </div>
+		  <div flex="90">
+	      <input class="form-control" ng-model="p.header">
+	  </div>
+	     </div>
+	     </md-card>
+	      	
+	      </div>
+	  </uib-accordion>
+		  
+
+
+	     </md-card>
+	</div>
+</div>
+
